@@ -75,7 +75,7 @@ function createPieMenu() {
 			pieItemAnchor.style.transform = `skew(${anchorSkew}rad) rotate(${anchorRotate}rad)`;
 
 			pieListItem.appendChild(pieItemAnchor);
-			pieList.appendChild(pieListItem)
+			pieList.appendChild(pieListItem);
 		}
 		pie.appendChild(pieList);
 		pieMenu.appendChild(pie);
@@ -86,7 +86,7 @@ function createPieMenu() {
 }
 
  createPieMenu();
-
+ 
 function setDate() {
 	var currentDate = document.getElementById('input_id').value;
 	var month = Number(currentDate.slice(0,2))
