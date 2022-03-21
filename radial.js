@@ -127,8 +127,10 @@ function addDay() {
 
 }	
 
-	let dayHand = document.createElement('img'); // create a new img item
-	img.src = raidal.svg;
-	document.getElementById('body').appendChild(dayHand);
-
-		
+const input = document.querySelector('input_id')
+input.onkeydown = (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault()
+    console.log('submit')
+  }
+};
