@@ -84,14 +84,14 @@ createPieMenu();
 
   // check whether the 'saveDate' data item is stored in web Storage
   if(localStorage.getItem('saveDate')) {
-    const date = localStorage.getItem('saveDate');
+    var date = localStorage.getItem('saveDate');
     document.getElementById('input_id').value=date;
 	var currentDate = document.getElementById('input_id').value;
 	var month = Number(currentDate.slice(0,2));
 	var season = Number(Math.ceil(month/4));
 	var day = Number(currentDate.slice(-2));
     var weekday = weekdays[day-1];
-	document.getElementById('alert1').innerHTML = 'Press Enter to set the dial hands';
+	document.getElementById('alert1').innerHTML = 'Click "Set date" to set the dial hands';
 //	document.getElementById('alert1').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' the season of ' + seasons[season-1];
 //	document.getElementById('alert1').innerHTML = 'The current date is: ' + ("0" + season).slice(-2) + " - " + ("0" + month).slice(-2) + " - " + ("0" + day).slice(-2);
     hour_rotation = (360/4 * season)-((360/4)/2);
