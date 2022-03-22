@@ -4,6 +4,8 @@ html, body {
 	font:16px Verdana, Arial, Helvetica, comic sans, sans-serif;
 /*	-ms-text-size-adjust:100; */
 /*	-webkit-text-size-adjust:100; */
+	background-image:linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),url("forrest.webp");
+	background-size: cover;
 }
 
 .pie-outer *, .pie-outer {
