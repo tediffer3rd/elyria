@@ -75,7 +75,7 @@ createPieMenu();
 	var day = Number(currentDate.slice(-2));
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
-	document.getElementById('displayDate').innerHTML = 'Click "Set date" to set the dial hands';
+	document.getElementById('displayDate').innerHTML = 'Press "ENTER" or click "Set date" to set the dial hands';
   }
 
 // set date to what is shown in the input window
