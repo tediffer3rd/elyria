@@ -1,12 +1,16 @@
 html, body {
-	margin:0;
 	padding:0;
-	font:16px Verdana, Arial, Helvetica, comic sans, sans-serif;
+	margin:0;
+	font:16px Verdana, Arial, Helvetica, comic sans, sans-serif; 
+/*	font:16px StorybookEnding; */
 /*	-ms-text-size-adjust:100; */
 /*	-webkit-text-size-adjust:100; */
 	background-image:linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),url("forrest.webp");
 	background-size: cover;
 }
+
+@font-face { font-family: StorybookEnding; src: url('StorybookEnding.ttf'); } 
+.displayDate {  font-family: StorybookEnding; }
 
 .pie-outer *, .pie-outer {
 	padding:0;
@@ -17,8 +21,9 @@ html, body {
 	position:absolute;
 	top:150px;
 	left:150px;
-	padding-top:10;
-	margin:auto;
+/*	padding-top:10;*/
+	padding:0;
+	margin:0;
 }
 
 .pie {
@@ -29,11 +34,14 @@ html, body {
 	overflow:hidden;
 	border-radius:50%;
 	border:2px solid black;
-
+	padding:0;
+	margin:0;
 }
 
 .pie ul {
 	list-style-type:none;
+	padding:0;
+	margin:0;
 }
 
 .pie ul:after {
@@ -49,31 +57,32 @@ html, body {
 	left:-50%;
 	width:100%;
 	height:100%;
- 	margin-left:-2px;
-	margin-top:-2px;
+/* 	margin-left:-2px;
+	margin-top:-2px;*/
+	padding:0;
+	margin:0;
+	border:2px solid black;
 	overflow:hidden;
 	-webkit-transform-origin:100% 100%;
 	-ms-transform-origin:100% 100%;
 	transform-origin:100% 100%;
-	border:2px solid black;
 }
 
 
 .pie a {
 	pointer-events:auto;
-/*	font-size:2vw; */
-	/*line-height:170%;*/
 	display:inline-block;
 	vertical-align: middle;
 	position:absolute;
-/*	top:50%; */
-		top:50.4%; 
-	left:50.4%;
+	top:50.5%; 
+	left:50.5%;
 	width:100%;
 	height:100%;
 	text-decoration:none;
 	text-align:center;
 	color:#fff;
+	padding:0;
+	margin:0;
 }
 
 .pie a:hover {
@@ -85,6 +94,7 @@ html, body {
 	/* #### - > 672px - #### */
 	.pie-outer {
 		padding:0;
+		margin:0;
 		width:40em;
 		height:40em;
 	}
@@ -98,11 +108,11 @@ html, body {
 	position: absolute;
 	top:500;
 	left:500;
-	margin: auto;
+	margin: 0;
 	/*to make the height and width responsive*/
 		height: 50vw;
 		width: 50vw;
-								border:2px solid black;
+	/*border:2px solid black;*/
 	/*background: url(clock.png) no-repeat;*/
 	/*background: url(calendar.png) no-repeat;*/
 	/*setting our background image*/
@@ -144,4 +154,3 @@ html, body {
 	left: 460px;
 	opacity: 0.8;
 }
-
