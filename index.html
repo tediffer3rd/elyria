@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<div style="color:red; font-weight: bold;">DO NOT PRESS THE ENTER KEY</div>
-<form>
-	<input type="int" id="input_id" value="0101">
-	<input type="Button" value="Set date" onclick="setDate()">
-	<input type="Button" value="Add day" onclick="addDay()">
+<!-- <div style="color:red; font-weight: bold;">DO NOT PRESS THE ENTER KEY</div> -->
+<form onSubmit="return false">
+	<input type="int" id="input_id" value="0101" method="post" autofocus />
+	<input type="submit" value="Set date" onclick="setDate()" />
+	<input type="button" value="Add day" onclick="addDay()" />
 </form>
 <div id="displayDate" style="color:red; font-weight: bold;"><br></div>
 	<script src="radial.js"></script>
