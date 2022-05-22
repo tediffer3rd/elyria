@@ -313,15 +313,14 @@ location.reload()
 		if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
 		if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
 		
-		if (day == 16 || day == 32) {var rad = " 100 100,"} else
-		if (day == 01 || day == 15 || day == 17 || day == 31) {var rad = " 101 101,"} else
-		if (day == 02 || day == 14 || day == 18 || day == 30) {var rad = " 104 104,"} else
-		if (day == 03 || day == 13 || day == 19 || day == 29) {var rad = " 111 111,"} else
-		if (day == 04 || day == 12 || day == 20 || day == 28) {var rad = " 125 125,"} else
-		if (day == 05 || day == 11 || day == 21 || day == 27) {var rad = " 152 152,"} else
-		if (day == 06 || day == 10 || day == 22 || day == 26) {var rad = " 212 212,"} else
-		if (day == 07 || day == 09 || day == 23 || day == 25) {var rad = " 406 406,"} else
-		if (day == 08 || day == 24) {var rad = " 000 000,"};
+		if (day == 01 || day == 16 || day == 17 || day == 32) {var rad = " 100 100,"} else
+		if (day == 02 || day == 15 || day == 18 || day == 31) {var rad = " 101 101,"} else
+		if (day == 03 || day == 14 || day == 19 || day == 30) {var rad = " 105 105,"} else
+		if (day == 04 || day == 13 || day == 20 || day == 29) {var rad = " 113 113,"} else
+		if (day == 05 || day == 12 || day == 21 || day == 28) {var rad = " 130 130,"} else
+		if (day == 06 || day == 11 || day == 22 || day == 27) {var rad = " 167 167,"} else
+		if (day == 07 || day == 10 || day == 23 || day == 26) {var rad = " 260 260,"} else
+		if (day == 08 || day == 09 || day == 24 || day == 25) {var rad = " 753 753,"};
 
 //		alert (day + " " + sweep1 + " " + sweep2 + " " + rad);
 		moonMaskPath.setAttribute("d", "M 100 0, a 100 100, " + sweep1 + " 0 200, " + rad + sweep2 + " 0 -200  z");
