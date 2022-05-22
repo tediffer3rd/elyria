@@ -15,8 +15,6 @@ var data =  [
 	Array.from(dayNums).map(String),
 	Array.from(months).map(String),
 	Array.from(seasons).map(String),
-//	Array.from(blankArray).map(String),
-//	Array.from(blankArray).map(String),
 	]
 
 // add background to page
@@ -28,7 +26,7 @@ var background = document.createElement('style');
 
 // create form to input and add date
 var inputForm = document.createElement('form');
-	inputForm.setAttribute("onSubmit", "return false");
+//	inputForm.setAttribute("onSubmit", "return false");
 
 // create input date text box
 var inputDate = document.createElement('input');
@@ -91,7 +89,6 @@ var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg1.setAttribute("height", (yOrigin * 2));
 	svg1.setAttribute("width" , (xOrigin * 3));
 	calendar.appendChild(svg1);
-
 
 // create big red circle
 var bigRedCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -167,8 +164,7 @@ for (var i = 0; i < data.length; i ++) {
 
 // itterate through the contents of the array
 		for (var j = 0; j < dataItem.length; j ++) {
-			var dataContent = dataItem[j];
-//			var dataContent = dataItem.length;
+			var textDataContent = dataItem[j];
 
 // create lines between text elements			
 			var textLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -183,7 +179,7 @@ for (var i = 0; i < data.length; i ++) {
 			
 //create text elements
 			var textJ = document.createElementNS("http://www.w3.org/2000/svg", "text");
-			textJ.setAttribute("id", ID + "textJ" + j);
+			textJ.setAttribute("id", ID + "textJ0" + (j+1));
 			textJ.setAttribute("x", xOrigin);
 			textJ.setAttribute("y", textYoffset);
 			textJ.setAttribute("fill", "#ffffff");
@@ -191,7 +187,8 @@ for (var i = 0; i < data.length; i ++) {
 			textJ.setAttribute("alignment-baseline", "middle");
 			textJ.setAttribute("style", font);
 			textJ.setAttribute("transform", "rotate(" + textRotate + " " + xOrigin + ", " + yOrigin + ")");
-			textJ.appendChild(document.createTextNode(dataContent));
+			textJ.setAttribute("onclick", "clickData(this.id)");
+			textJ.appendChild(document.createTextNode(textDataContent));
 			svg1.appendChild(textJ);
 			textLineRotate += rotateAngle
 			textRotate += rotateAngle
@@ -199,6 +196,24 @@ for (var i = 0; i < data.length; i ++) {
 		textYoffset += yoffset;
 		circleYoffset += yoffset;
 }
+
+function clickData (clicked_id) {
+		if (clicked_id.startsWith("days")) {
+			var month = Number(currentDate.slice(0,2));
+			var day = Number(clicked_id.slice(-2));
+			var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+			document.getElementById('inputDate').value = clickedDate;
+		location.reload()
+		} else
+		if (clicked_id.startsWith("months")) {
+			var month = Number(clicked_id.slice(-2));
+			var day = Number(currentDate.slice(-2));
+			var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+			document.getElementById('inputDate').value = clickedDate;
+		}
+		setDate()
+	}
+
 
   // check whether the 'saveDate' data item is stored in web Storage
   if(localStorage.getItem('saveDate')) {
@@ -220,7 +235,6 @@ function setDate() {
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' the season of ' + seasons[season-1];
-//    document.getElementById('displayDate').innerHTML = 'The current date is: ' + ("0" + season).slice(-2) + " - " + ("0" + month).slice(-2) + " - " + ("0" + day).slice(-2);
     seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
@@ -245,7 +259,6 @@ function addDay() {
 	document.getElementById('inputDate').value = newDate;
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' the season of ' + seasons[season-1];
-//    document.getElementById('displayDate').innerHTML = 'The current date is: ' + ("0" + season).slice(-2) + " - " + ("0" + month).slice(-2) + " - " + ("0" + day).slice(-2);
     seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
