@@ -282,7 +282,7 @@ location.reload()
 		moonMaskCircle.setAttribute("id", "moonMaskCircle");
 		moonMaskCircle.setAttribute("cx", "100");
 		moonMaskCircle.setAttribute("cy", "100");
-		moonMaskCircle.setAttribute("r", "100");
+		moonMaskCircle.setAttribute("r", "99");
 //		moonMaskCircle.setAttribute("stroke", "#ffffff");
 //		moonMaskCircle.setAttribute("stroke-width", "1");
 		moonMaskCircle.setAttribute("fill", "#ffffff");
