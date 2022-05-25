@@ -7,8 +7,8 @@ var font = "font-family: Sofia; font-size: 23px;"
 //create svg container to hold celestial bodies
 var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg1.setAttribute("id", "svg1")
-	svg1.setAttribute("height", 1000);
-	svg1.setAttribute("width", 1000);
+	svg1.setAttribute("height", 500);
+	svg1.setAttribute("width", 500);
 	svg1.setAttribute("viewBox", "-10 -10  2100 2100");
 	document.body.appendChild(svg1);
 
