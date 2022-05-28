@@ -198,34 +198,35 @@ for (var i = 0; i < data.length; i ++) {
 }
 
 function clickData (clicked_id) {
-		if (clicked_id.startsWith("days")) {
-			var month = Number(currentDate.slice(0,2));
-			var day = Number(clicked_id.slice(-2));
-			var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-			document.getElementById('inputDate').value = clickedDate;
-		location.reload()
-		} else
-		if (clicked_id.startsWith("months")) {
-			var month = Number(clicked_id.slice(-2));
-			var day = Number(currentDate.slice(-2));
-			var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-			document.getElementById('inputDate').value = clickedDate;
-		}
-		setDate()
+	var currentDate = document.getElementById('inputDate').value;
+	if (clicked_id.startsWith("days")) {
+		var month = Number(currentDate.slice(0,2));
+		var day = Number(clicked_id.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+		document.getElementById('inputDate').value = clickedDate;
+	location.reload()
+	} else
+	if (clicked_id.startsWith("months")) {
+		var month = Number(clicked_id.slice(-2));
+		var day = Number(currentDate.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+		document.getElementById('inputDate').value = clickedDate;
 	}
+	setDate()
+}
 
 
-  // check whether the 'saveDate' data item is stored in web Storage
-  if(localStorage.getItem('saveDate')) {
-    var savedDate = localStorage.getItem('saveDate');
-    document.getElementById('inputDate').value=savedDate;
+// check whether the 'saveDate' data item is stored in web Storage
+if(localStorage.getItem('saveDate')) {
+	var savedDate = localStorage.getItem('saveDate');
+	document.getElementById('inputDate').value=savedDate;
 	var currentDate = document.getElementById('inputDate').value;
 	var month = Number(currentDate.slice(0,2));
 	var day = Number(currentDate.slice(-2));
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'Press "ENTER" or click "Set date" to set the dial hands';
-  }
+}
 
 // set date to what is shown in the input window
 function setDate() {
@@ -235,7 +236,7 @@ function setDate() {
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' in the season of ' + seasons[season-1];
-    seasonsRotation = (360/4 * season)-((360/4)/2);
+	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
 	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400, 400)");
@@ -259,7 +260,7 @@ function addDay() {
 	document.getElementById('inputDate').value = newDate;
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' in the season of ' + seasons[season-1];
-    seasonsRotation = (360/4 * season)-((360/4)/2);
+	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
 	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400, 400)");
@@ -273,73 +274,70 @@ location.reload()
 
 // MOON
 // create div to hold moon
-	var moonDiv = document.createElement('div');
-		moonDiv.setAttribute("id", "moonDiv");
-		moonDiv.setAttribute("style", "position: absolute; left: 855px; top: 100px; width: 200px; height: 200px;");
+var moonDiv = document.createElement('div');
+	moonDiv.setAttribute("id", "moonDiv");
+	moonDiv.setAttribute("style", "position: absolute; left: 855px; top: 100px; width: 200px; height: 200px;");
 	document.body.appendChild(moonDiv);
 
 // create svg to show moon
-	var svgMoon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-		svgMoon.setAttribute("id", "svgMoon");
-		svgMoon.setAttribute("height", "200");
-		svgMoon.setAttribute("width" , "200");
+var svgMoon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svgMoon.setAttribute("id", "svgMoon");
+	svgMoon.setAttribute("height", "200");
+	svgMoon.setAttribute("width" , "200");
 	moonDiv.appendChild(svgMoon);
 
 // create mask to hide part of the moon
-	var moonMask = document.createElementNS("http://www.w3.org/2000/svg", "mask");
-		moonMask.setAttribute("id", "moonMask");
+var moonMask = document.createElementNS("http://www.w3.org/2000/svg", "mask");
+	moonMask.setAttribute("id", "moonMask");
 	svgMoon.appendChild(moonMask);
 
 // create circle to hide moon
-	var moonMaskCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-		moonMaskCircle.setAttribute("id", "moonMaskCircle");
-		moonMaskCircle.setAttribute("cx", "100");
-		moonMaskCircle.setAttribute("cy", "100");
-		moonMaskCircle.setAttribute("r", "99");
-//		moonMaskCircle.setAttribute("stroke", "#ffffff");
-//		moonMaskCircle.setAttribute("stroke-width", "1");
-		moonMaskCircle.setAttribute("fill", "#ffffff");
+var moonMaskCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	moonMaskCircle.setAttribute("id", "moonMaskCircle");
+	moonMaskCircle.setAttribute("cx", "100");
+	moonMaskCircle.setAttribute("cy", "100");
+	moonMaskCircle.setAttribute("r", "99");
+//	moonMaskCircle.setAttribute("stroke", "#ffffff");
+//	moonMaskCircle.setAttribute("stroke-width", "1");
+	moonMaskCircle.setAttribute("fill", "#ffffff");
 	moonMask.appendChild(moonMaskCircle)
 
 //create path to show moon
-	var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-		moonMaskPath.setAttribute("id", "moonMaskPath");
-		
+var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	moonMaskPath.setAttribute("id", "moonMaskPath");
 	var currentDate = document.getElementById('inputDate').value;
 	var day = Number(currentDate.slice(-2));
 //if statements to set mask path
-		if (day <=08) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"} else
-		if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
-		if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
-		if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
+	if (day <=08) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"} else
+	if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
+	if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
+	if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
 		
-		if (day == 01 || day == 16 || day == 17 || day == 32) {var rad = " 100 100,"} else
-		if (day == 02 || day == 15 || day == 18 || day == 31) {var rad = " 101 101,"} else
-		if (day == 03 || day == 14 || day == 19 || day == 30) {var rad = " 105 105,"} else
-		if (day == 04 || day == 13 || day == 20 || day == 29) {var rad = " 113 113,"} else
-		if (day == 05 || day == 12 || day == 21 || day == 28) {var rad = " 130 130,"} else
-		if (day == 06 || day == 11 || day == 22 || day == 27) {var rad = " 167 167,"} else
-		if (day == 07 || day == 10 || day == 23 || day == 26) {var rad = " 260 260,"} else
-		if (day == 08 || day == 09 || day == 24 || day == 25) {var rad = " 753 753,"};
+	if (day == 01 || day == 16 || day == 17 || day == 32) {var rad = " 100 100,"} else
+	if (day == 02 || day == 15 || day == 18 || day == 31) {var rad = " 101 101,"} else
+	if (day == 03 || day == 14 || day == 19 || day == 30) {var rad = " 105 105,"} else
+	if (day == 04 || day == 13 || day == 20 || day == 29) {var rad = " 113 113,"} else
+	if (day == 05 || day == 12 || day == 21 || day == 28) {var rad = " 130 130,"} else
+	if (day == 06 || day == 11 || day == 22 || day == 27) {var rad = " 167 167,"} else
+	if (day == 07 || day == 10 || day == 23 || day == 26) {var rad = " 260 260,"} else
+	if (day == 08 || day == 09 || day == 24 || day == 25) {var rad = " 753 753,"};
 
 //		alert (day + " " + sweep1 + " " + sweep2 + " " + rad);
-		moonMaskPath.setAttribute("d", "M 100 0, a 100 100, " + sweep1 + " 0 200, " + rad + sweep2 + " 0 -200  z");
-//		moonMaskPath.setAttribute("d", "M 100 0, a 100 100,     0 0 1,     0 200,   189 189, 0 0 1,    0 -200  z");
-		moonMaskPath.setAttribute("fill", "#333333");
-//		moonMaskPath.setAttribute("stroke", "#000000");
-//		moonMaskPath.setAttribute("stroke-width", "1");
+	moonMaskPath.setAttribute("d", "M 100 0, a 100 100, " + sweep1 + " 0 200, " + rad + sweep2 + " 0 -200  z");
+//	moonMaskPath.setAttribute("d", "M 100 0, a 100 100,     0 0 1,     0 200,   189 189, 0 0 1,    0 -200  z");
+	moonMaskPath.setAttribute("fill", "#333333");
+//	moonMaskPath.setAttribute("stroke", "#000000");
+//	moonMaskPath.setAttribute("stroke-width", "1");
 	moonMask.appendChild(moonMaskPath);
 
 
 // create image element to hold moon image file
-	var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
-		moonImage.setAttribute("id", "moonImage");
-		moonImage.setAttribute("href", "redmoon.png");
-		moonImage.setAttribute("height", "200");
-		moonImage.setAttribute("width", "200");
-		moonImage.setAttribute("mask", "url(#moonMask)");
+var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+	moonImage.setAttribute("id", "moonImage");
+	moonImage.setAttribute("href", "redmoon.png");
+	moonImage.setAttribute("height", "200");
+	moonImage.setAttribute("width", "200");
+	moonImage.setAttribute("mask", "url(#moonMask)");
 	svgMoon.appendChild(moonImage);
 
-	
 setDate()
-
