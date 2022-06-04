@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="slices.css" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-<title>slice testing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>The Calendar of Elyria</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link rel="stylesheet" href="slices.css">
 
 </head>
-
 <body>
-<div id="inputForm">
-<form>
-<input id="inputDate" type="int" value="0101" method="post" autofocus="">
-<input id="setDateButton" type="submit" value="Set Date" onclick="setDate()">
-<input id="addDayButton" type="button" value="Add Day" onclick="addDay()">
+<div id="main">
+
+<form id="inputForm">
+<input id="inputDate" type="int" value="0101" method="submit" autofocus="">
+<input id="setDateButton" type="button" value="Set date" onclick="setDate()">
+<input id="addDayButton" type="button" value="Add day" onclick="addDay()">
+<input id="resetButton" type="button" value="Reset date" onclick="resetDate()">
 </form>
+
+<div id="displayDate">
+Enter the current date in the box above and press "ENTER" or click the "Set date" button
 </div>
-<div id="displayDate">The current date is: Elimdas the fifth day of Seprensdor in the season of Sepren</div>
-<div id="calendar" >
-	<script src="slices.js"></script>
+
+<script src="slices.js"></script>
+
+
 </div>
 </body>
 </html>

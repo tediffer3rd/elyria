@@ -1,9 +1,11 @@
+
+
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
 var dayNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
 var weekdays = ["Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makda", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makda", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makda", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makda"];
 var easyDays = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twnetieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth','thitieth', 'thirty-first', 'thirty-second'];
-var clockNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+var blankArray = []
 
 var data =  [
 	Array.from(dayNums).map(String),
@@ -20,8 +22,15 @@ var circleYoffset = yoffset;
 var textYoffset = yoffset/2;
 var yEnd = yOrigin - (yOrigin / numPaths);
 var circleNum = 1;
+var pointerLineWidth = 10;
+var pointerLineWidthAdjust = 5
 var compassLineRotateAngle = 45;
 var compassLineRotate = 0;
+
+// create circular div element to hold svg
+var calendar = document.createElement('div');
+	calendar.setAttribute("id", "calendar");
+	document.body.appendChild(calendar);
 
 //create svg container
 var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -44,13 +53,13 @@ var littleBlackDot = document.createElementNS("http://www.w3.org/2000/svg", "cir
 	littleBlackDot.setAttribute("cx", xOrigin);
 	littleBlackDot.setAttribute("cy", yOrigin);
 	littleBlackDot.setAttribute("r", "2");
-//	svg1.appendChild(littleBlackDot);
+	littleBlackDot.setAttribute("fill", "#000000");
+	svg1.appendChild(littleBlackDot);
 
 // create 8 cardinal compass lines
-for (var i = 0; i < 4; i ++) {
+for (var i = 1; i <= 4; i ++) {
 	var compassLines = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	compassLines.setAttribute("id", "line" + (i+1));
-	compassLines.setAttribute("class", "compassLines");
 	compassLines.setAttribute("x1", "400");
 	compassLines.setAttribute("y1", "0");
 	compassLines.setAttribute("x2", "400");
@@ -66,17 +75,16 @@ for (var i = 0; i < data.length; i ++) {
 
 //set id names bases on itteration
 	if (i == 0) {
-		var ID = "days"
+		var ID = "days";
 	} else if (i == 1) {
-		var ID = "months"
+		var ID = "months";
 	} else if (i == 2) {
-		var ID = "seasons"
+		var ID = "seasons";
 	} else {}
 	
 // create path dividing circles
 	var dividingCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 		dividingCircle.setAttribute("id", ID + "circle" + i);
-		dividingCircle.setAttribute("class", "dividingCircle");
 		dividingCircle.setAttribute("cx",xOrigin);
 		dividingCircle.setAttribute("cy",yOrigin);
 		dividingCircle.setAttribute("r", (yOrigin - circleYoffset));
@@ -91,7 +99,6 @@ for (var i = 0; i < data.length; i ++) {
 
 // set variables for segments & rotation
 		var numSegments = dataItem.length;
-		var textxOrigin = xOrigin-(xOrigin/numSegments);
 		var rotateAngle = 360/numSegments;
 		var textRotate = rotateAngle/2;
 		var textLineRotate = rotateAngle;
@@ -103,9 +110,8 @@ for (var i = 0; i < data.length; i ++) {
 // create lines between text elements			
 			var textLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
 			textLine.setAttribute("id", ID + "textLine" + j);
-			textLine.setAttribute("class", "textLine");
 			textLine.setAttribute("x1", xOrigin);
-			textLine.setAttribute("y1", (circleYoffset));
+			textLine.setAttribute("y1", circleYoffset);
 			textLine.setAttribute("x2", xOrigin);
 			textLine.setAttribute("y2", (circleYoffset - yoffset));
 			textLine.setAttribute("transform", "rotate(" + textLineRotate + " " + xOrigin + ", " + yOrigin + ")");
@@ -114,9 +120,11 @@ for (var i = 0; i < data.length; i ++) {
 //create text elements
 			var textJ = document.createElementNS("http://www.w3.org/2000/svg", "text");
 			textJ.setAttribute("id", ID + "textJ0" + (j+1));
-			textJ.setAttribute("class", "textJ");
 			textJ.setAttribute("x", xOrigin);
 			textJ.setAttribute("y", textYoffset);
+			textJ.setAttribute("fill", "#ffffff");
+			textJ.setAttribute("text-anchor", "middle");
+			textJ.setAttribute("alignment-baseline", "middle");
 			textJ.setAttribute("transform", "rotate(" + textRotate + " " + xOrigin + ", " + yOrigin + ")");
 			textJ.setAttribute("onclick", "clickData(this.id)");
 			textJ.appendChild(document.createTextNode(textDataContent));
@@ -128,35 +136,10 @@ for (var i = 0; i < data.length; i ++) {
 		circleYoffset += yoffset;
 }
 
-function clickData (clicked_id) {
-	var currentDate = document.getElementById('inputDate').value;
-	if (clicked_id.startsWith("days")) {
-		var month = Number(currentDate.slice(0,2));
-		var day = Number(clicked_id.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-		document.getElementById('inputDate').value = clickedDate;
-	location.reload()
-	} else
-	if (clicked_id.startsWith("months")) {
-		var month = Number(clicked_id.slice(-2));
-		var day = Number(currentDate.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-		document.getElementById('inputDate').value = clickedDate;
-	}
-	setDate()
-}
-
-
 // check whether the 'saveDate' data item is stored in web Storage
 if(localStorage.getItem('saveDate')) {
 	var savedDate = localStorage.getItem('saveDate');
 	document.getElementById('inputDate').value=savedDate;
-	var currentDate = document.getElementById('inputDate').value;
-	var month = Number(currentDate.slice(0,2));
-	var day = Number(currentDate.slice(-2));
-	var season = Number(Math.ceil(month/4));
-	var weekday = weekdays[day-1];
-	document.getElementById('displayDate').innerHTML = 'Press "ENTER" or click "Set date" to set the dial hands';
 }
 
 // set date to what is shown in the input window
@@ -170,12 +153,39 @@ function setDate() {
 	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
-	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400, 400)");
-	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400, 400)");
-	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400, 400)");
-
+	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400 400)");
+	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400 400)");
+	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
 	}
+	
+function resetDate() {
+	localStorage.setItem('saveDate', "0101");
+	document.getElementById('inputDate').value = "0101";
+	location.reload(); 
+ }
+	
+//set date by ckicking day or month
+function clickData (clicked_id) {
+	var currentDate = document.getElementById('inputDate').value;
+	if (clicked_id.startsWith("days")) {
+		var month = Number(currentDate.slice(0,2));
+		var day = Number(clicked_id.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	} else
+	if (clicked_id.startsWith("months")) {
+		var month = Number(clicked_id.slice(-2));
+		var day = Number(currentDate.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	}
+	location.reload();
+}
 
 //add a day to the date
 function addDay() {
@@ -191,17 +201,19 @@ function addDay() {
 	document.getElementById('inputDate').value = newDate;
 	var weekday = weekdays[day-1];
 	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' in the season of ' + seasons[season-1];
-	seasonsRotation = (360/4 * season)-((360/4)/2);
-	monthsRotation = (360/16 * month)-((360/16)/2);
-	daysRotation = (360/32 * day)-((360/32)/2);
-	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400, 400)");
-	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400, 400)");
-	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400, 400)");
-
+	newSeasonsRotation = (360/4 * season)-((360/4)/2);
+	newMonthsRotation = (360/16 * month)-((360/16)/2);
+	newDaysRotation = (360/32 * day)-((360/32)/2);
 	localStorage.setItem('saveDate', newDate);
-location.reload()
-	}
+	location.reload()
+	}	
 
+function resetDate() {
+	localStorage.setItem('saveDate', "0101");
+	document.getElementById('inputDate').value = "0101";
+	location.reload(); 
+ }
+	
 // MOON
 // create div to hold moon
 var moonDiv = document.createElement('div');
@@ -220,12 +232,12 @@ var moonMask = document.createElementNS("http://www.w3.org/2000/svg", "mask");
 	moonMask.setAttribute("id", "moonMask");
 	svgMoon.appendChild(moonMask);
 
-// create circle to show just the moon
+// create circle to hide moon
 var moonMaskCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 	moonMaskCircle.setAttribute("id", "moonMaskCircle");
 	moonMaskCircle.setAttribute("cx", "100");
 	moonMaskCircle.setAttribute("cy", "100");
-	moonMaskCircle.setAttribute("r", "98");
+	moonMaskCircle.setAttribute("r", "99");
 	moonMask.appendChild(moonMaskCircle)
 
 //create path to show moon
@@ -247,9 +259,9 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 	if (day == 06 || day == 11 || day == 22 || day == 27) {var rad = " 167 167,"} else
 	if (day == 07 || day == 10 || day == 23 || day == 26) {var rad = " 260 260,"} else
 	if (day == 08 || day == 09 || day == 24 || day == 25) {var rad = " 753 753,"};
-
 	moonMaskPath.setAttribute("d", "M 100 0, a 100 100, " + sweep1 + " 0 200, " + rad + sweep2 + " 0 -200  z");
 	moonMask.appendChild(moonMaskPath);
+
 
 // create image element to hold moon image file
 var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
