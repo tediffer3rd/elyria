@@ -28,7 +28,6 @@ function showCoords(event) {
 		}
 	}
 
-
 // create random stars
 	var starsvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 		starsvg.setAttribute("id", "starsvg");
@@ -50,5 +49,3 @@ function showCoords(event) {
 			star.setAttribute("fill", "#ffffff");
 	starsvg.appendChild(star);
 	}
-
-
