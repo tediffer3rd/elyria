@@ -21,9 +21,9 @@ body {
 }
 
 #inputDate {
-	position: relative;
-	left: 0px;
-	top: 0px;
+	position: absolute;
+	left: 85px;
+	top: 25px;
 	border: 1px solid black;
 	padding: 5px;
 	margin: 0px;
