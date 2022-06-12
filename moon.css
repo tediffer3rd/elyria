@@ -76,7 +76,7 @@ body {
 	stroke-width: 1px;
 	fill: #bb2200;
 	animation-name: rotate; 
-	animation-duration: 10s; 
+	animation-duration: 1s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
     transform-origin: 150px 500px;
@@ -110,7 +110,7 @@ body {
 
 #notEid { /* everything EXCEPT Eid */
 	animation-name: rotate; 
-	animation-duration: 10s; 
+	animation-duration: 32s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
     transform-origin: 0px 500px;
@@ -118,7 +118,7 @@ body {
 
 #allg { /* everything */
 	animation-name: rotate; 
-	animation-duration: 56s; 
+	animation-duration: 512s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
     transform-origin: 500px 500px;
