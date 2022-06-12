@@ -1,0 +1,134 @@
+
+body { 
+/*	background-image: linear-gradient(rgba(255, 255, 255, 0.250), rgba(255, 255, 255, 0.250)),url("stars.jpg")*/; 
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: #222;
+	font-family: "Sofia", sans-serif;
+}
+
+#svg1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1000px;
+	height: 800px;
+	borderx: 1px solid #000000;
+}
+
+#svgDotx {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: 1px solid #000000;
+}
+
+#Eid {
+	stroke: #000000;
+	stroke-width: 1;
+	fill: #ffd966;
+}
+#Io {
+	stroke: #000000;
+	stroke-width: 1;
+	fill: #e56702;
+}
+
+#ioeid { /* Io & Eid */
+	animation-name: rotate; *
+	animation-duration: 60s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin:500px 500px;
+}
+
+#IoEidPath {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: none;
+}
+
+#elyria {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: #0000aa;
+}
+
+#elyriaDot  {
+	stroke: #ffffff;
+	stroke-width: 1px;
+	fill: none;
+	animation-name: rotateccw; *
+	animation-duration: 240s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin:500px 500px;
+}
+
+#elyriaPath {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: none;
+}
+
+#luna {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: #bb2200;
+	animation-name: rotate; 
+	animation-duration: 10s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin: 150px 500px;
+}
+
+#lunaPath {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: none;
+    transform-origin: 135px 500px;
+}
+
+#elyriaDot2  {
+	stroke: #ffffff;
+	stroke-width: 1px;
+	fill: none;
+	animation-name: rotate; *
+	animation-duration: 6s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin:1500px 500px;
+}
+
+#elylu { /* Elyria & Luna */
+	animation-name: rotate; *
+	animation-duration: 12s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin: 800px 500px;
+}
+
+#notEid { /* everything EXCEPT Eid */
+	animation-name: rotate; 
+	animation-duration: 10s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin: 0px 500px;
+}
+
+#allg { /* everything */
+	animation-name: rotate; 
+	animation-duration: 56s; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+    transform-origin: 500px 500px;
+}
+
+@keyframes rotate {
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes rotateccw {
+	100% {transform: rotate(-360deg);}
+}
+
