@@ -13,68 +13,73 @@ body {
 	position: absolute;
 	left: 85px;
 	top: 25px;
-//	width: 500px;
-//	height: 50px;
-//	border: 1px solid black;
+	width: 1200px;
+	height: 50px; 
+/*	border: 1px solid black; */
 	padding: 0px;
 	margin: 0px;
 }
 
 #inputDate {
-	position: absolute;
-	left: 85px;
-	top: 25px;
-	border: 1px solid black;
-	padding: 5px;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 125px;
 	margin: 0px;
+	font-family: "Sofia", sans-serif;
+	font-size: 20px;
 }
 	
 #setDateButton {
 	position: relative;
-	left: 0px;
+	left: 10px;
 	top: 0px;
-	border: 1px solid black;
-	padding: 5px;
+	width: 125px;
 	margin: 0px;
+	font-family: "Sofia", sans-serif;
+	font-size: 20px;
 }
 
 #addDayButton {
 	position: relative;
-	left: 0px;
+	left: 20px;
 	top: 0px;
-	border: 1px solid black;
-	padding: 5px;
+	width: 125px;
 	margin: 0px;
+	font-family: "Sofia", sans-serif;
+	font-size: 20px;
 }
 
 #resetButton {
 	position: relative;
-	left: 0px;
+	left: 30px;
 	top: 0px;
-	border: 1px solid black;
-	padding: 5px;
+	width: 125px;
 	margin: 0px;
+	font-family: "Sofia", sans-serif;
+	font-size: 20px;
 }
 
 #displayDate {
 	position: absolute;
 	left: 85px;
-	top: 55px;
+	top: 65px;
+	width: 1200px;
 	color: #ffffff;
 	font-size: 30px; 
 	font-weight: normal;
-//	border: 1px solid black;
+/*	border: 1px solid black; */
 }
 
 #calendar {
 	position: absolute;
 	left: 50px;
-	top: 100px;
+	top: 125px;
 	width: 800px;
 	height: 800px;
 	border: 3px solid black; 
 	border-radius:50%; 
-	background: conic-gradient(from 17deg, #009900, #cc0000, #cc0000, #ff8000, #ff8000, #0000ff, #0000ff, #009900, #009900);
+	background: conic-gradient(from -17deg, #009900, #cc0000, #cc0000, #cc0000, #ff8000, #ff8000, #ff8000, #0000ff, #0000ff, #0000ff, #009900, #009900, #009900);
 }
 
 circle {
@@ -96,12 +101,6 @@ line {
 	stroke-width: 3px;
 }
 
-.dividingCircle {
-	stroke: #000000;
-	stroke-width: 3px;
-	fill: none;
-}
-
 .pointerLine {
 	stroke: #000000; 
 	stroke-linecap: round;
@@ -119,24 +118,18 @@ line {
 	stroke-width: 20px; 
 }
 
-.textLine {
-	stroke:#000000; 
-	stroke-width: 3px;
-}
-
 .textJ {
 	font-size: 22px; 
 	font-weight: normal;
 	fill: #ffffff;
 	text-anchor: middle;
 	alignment-baseline: middle;
-	
 }
 
 #moonDiv {
 	position: absolute; 
 	left: 850px; 
-	top: 100px; 
+	top: 125px; 
 	width: 200px; 
 	height: 200px;
 }
