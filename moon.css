@@ -58,11 +58,11 @@ body {
 	stroke: #ffffff;
 	stroke-width: 1px;
 	fill: none;
-	animation-name: rotateccw; *
-	animation-duration: 240s; 
+	animation-name: rotate;
+	animation-duration: 2s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
-    transform-origin:500px 500px;
+    transform-origin: 150px 500px;
 }
 
 #elyriaPath {
