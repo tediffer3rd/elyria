@@ -158,34 +158,6 @@ function setDate() {
 	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
 	}
-	
-function resetDate() {
-	localStorage.setItem('saveDate', "0101");
-	document.getElementById('inputDate').value = "0101";
-	location.reload(); 
- }
-	
-//set date by ckicking day or month
-function clickData (clicked_id) {
-	var currentDate = document.getElementById('inputDate').value;
-	if (clicked_id.startsWith("days")) {
-		var month = Number(currentDate.slice(0,2));
-		var day = Number(clicked_id.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-//		alert("you are setting the date to: " + clickedDate);
-		document.getElementById('inputDate').value = clickedDate;
-	localStorage.setItem('saveDate', clickedDate);
-	} else
-	if (clicked_id.startsWith("months")) {
-		var month = Number(clicked_id.slice(-2));
-		var day = Number(currentDate.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-//		alert("you are setting the date to: " + clickedDate);
-		document.getElementById('inputDate').value = clickedDate;
-	localStorage.setItem('saveDate', clickedDate);
-	}
-	location.reload();
-}
 
 //add a day to the date
 function addDay() {
@@ -208,11 +180,34 @@ function addDay() {
 	location.reload()
 	}	
 
+//reset to 0101
 function resetDate() {
 	localStorage.setItem('saveDate', "0101");
 	document.getElementById('inputDate').value = "0101";
 	location.reload(); 
- }
+}
+
+//set date by ckicking day or month
+function clickData (clicked_id) {
+	var currentDate = document.getElementById('inputDate').value;
+	if (clicked_id.startsWith("days")) {
+		var month = Number(currentDate.slice(0,2));
+		var day = Number(clicked_id.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	} else
+	if (clicked_id.startsWith("months")) {
+		var month = Number(clicked_id.slice(-2));
+		var day = Number(currentDate.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	}
+	location.reload();
+}
 	
 // MOON
 // create div to hold moon
