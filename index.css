@@ -1,7 +1,7 @@
 
 body {
 /*	background-image: url("forrestdrk.png"); */
-	background-image: linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.250)),url("wp4110751.webp");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),url("wp4110751.webp"); 
 	background-size: cover;
 	background-attachment: fixed;
 	font-family: "Sofia", sans-serif;
