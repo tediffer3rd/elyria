@@ -261,7 +261,8 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 // create image element to hold moon image file
 var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
 	moonImage.setAttribute("id", "moonImage");
-	moonImage.setAttribute("href", "redmoon.png");
+//	moonImage.setAttribute("href", "redmoon.png");
+	moonImage.setAttribute("href", "venus.jpg");
 	moonImage.setAttribute("height", "200");
 	moonImage.setAttribute("width", "200");
 	moonImage.setAttribute("mask", "url(#moonMask)");
