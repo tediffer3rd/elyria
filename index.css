@@ -80,7 +80,8 @@ body {
 	height: 800px;
 	border: 3px solid black; 
 	border-radius:50%; 
-	background: conic-gradient(from -17deg, #009900, #cc0000, #cc0000, #cc0000, #ff8000, #ff8000, #ff8000, #0000ff, #0000ff, #0000ff, #009900, #009900, #009900);
+/*	background: conic-gradient(from -17deg, #009900, #cc0000, #cc0000, #cc0000, #ff8000, #ff8000, #ff8000, #0000ff, #0000ff, #0000ff, #009900, #009900, #009900); */
+	background: conic-gradient(from 22.5deg, green, green, red, red, purple, purple, blue, blue, green);
 }
 
 circle {
