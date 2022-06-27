@@ -1,3 +1,7 @@
+:root {
+  --gradColor1: #00000088;
+  --gradColor2: #00000088;
+}
 
 body {
 /*	background-image: url("forrestdrk.png"); */
