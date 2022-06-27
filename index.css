@@ -5,11 +5,13 @@
 
 body {
 /*	background-image: url("forrestdrk.png"); */
-	background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),url("wp4110751.webp"); 
+/*	background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),url("wp4110751.webp"); */
+	background-image: linear-gradient(to right, var(--gradColor1), var(--gradColor2)),url("wp4110751.webp"); 
 	background-size: cover;
 	background-attachment: fixed;
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
+	text-shadow: 2px 2px 4px #000000;
 }
 
 #main {}
