@@ -157,6 +157,16 @@ function setDate() {
 	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400 400)");
 	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
+	// change backgroundColor based on month
+	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#00ff0055")} else
+	if (month <= 3) {r.style.setProperty("--gradColor1", "#00ff0055"); r.style.setProperty("--gradColor2", "#00ff0055")} else
+	if (month <= 5) {r.style.setProperty("--gradColor1", "#00ff0055"); r.style.setProperty("--gradColor2", "#ff000055")} else
+	if (month <= 7) {r.style.setProperty("--gradColor1", "#ff000055"); r.style.setProperty("--gradColor2", "#ff000055")} else
+	if (month <= 9) {r.style.setProperty("--gradColor1", "#ff000055"); r.style.setProperty("--gradColor2", "#80008055")} else
+	if (month <=11) {r.style.setProperty("--gradColor1", "#80008055"); r.style.setProperty("--gradColor2", "#80008055")} else
+	if (month <=13) {r.style.setProperty("--gradColor1", "#80008055"); r.style.setProperty("--gradColor2", "#0000ff55")} else
+	if (month <=15) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#0000ff55")} else
+	if (month ==16) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#00ff0055")} ;
 	}
 
 //add a day to the date
