@@ -26,6 +26,9 @@ var pointerLineWidth = 10;
 var pointerLineWidthAdjust = 5
 var compassLineRotateAngle = 45;
 var compassLineRotate = 0;
+var r = document.querySelector(':root');
+var rs = getComputedStyle(r);
+
 
 // create circular div element to hold svg
 var calendar = document.createElement('div');
@@ -158,15 +161,15 @@ function setDate() {
 	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
 	// change backgroundColor based on month
-	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#00ff0055")} else
-	if (month <= 3) {r.style.setProperty("--gradColor1", "#00ff0055"); r.style.setProperty("--gradColor2", "#00ff0055")} else
-	if (month <= 5) {r.style.setProperty("--gradColor1", "#00ff0055"); r.style.setProperty("--gradColor2", "#ff000055")} else
-	if (month <= 7) {r.style.setProperty("--gradColor1", "#ff000055"); r.style.setProperty("--gradColor2", "#ff000055")} else
-	if (month <= 9) {r.style.setProperty("--gradColor1", "#ff000055"); r.style.setProperty("--gradColor2", "#80008055")} else
-	if (month <=11) {r.style.setProperty("--gradColor1", "#80008055"); r.style.setProperty("--gradColor2", "#80008055")} else
-	if (month <=13) {r.style.setProperty("--gradColor1", "#80008055"); r.style.setProperty("--gradColor2", "#0000ff55")} else
-	if (month <=15) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#0000ff55")} else
-	if (month ==16) {r.style.setProperty("--gradColor1", "#0000ff55"); r.style.setProperty("--gradColor2", "#00ff0055")} ;
+	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#00ff0033")} else
+	if (month <= 3) {r.style.setProperty("--gradColor1", "#00ff0033"); r.style.setProperty("--gradColor2", "#00ff0033")} else
+	if (month <= 5) {r.style.setProperty("--gradColor1", "#00ff0033"); r.style.setProperty("--gradColor2", "#ff000033")} else
+	if (month <= 7) {r.style.setProperty("--gradColor1", "#ff000033"); r.style.setProperty("--gradColor2", "#ff000033")} else
+	if (month <= 9) {r.style.setProperty("--gradColor1", "#ff000033"); r.style.setProperty("--gradColor2", "#80008033")} else
+	if (month <=11) {r.style.setProperty("--gradColor1", "#80008033"); r.style.setProperty("--gradColor2", "#80008033")} else
+	if (month <=13) {r.style.setProperty("--gradColor1", "#80008033"); r.style.setProperty("--gradColor2", "#0000ff33")} else
+	if (month <=15) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#0000ff33")} else
+	if (month ==16) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#00ff0033")} ;
 	}
 
 //add a day to the date
@@ -255,7 +258,8 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 	if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
 	if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
 	if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
-		
+
+// set the arc of moonMask
 	if (day == 01 || day == 16 || day == 17 || day == 32) {var rad = " 100 100,"} else
 	if (day == 02 || day == 15 || day == 18 || day == 31) {var rad = " 101 101,"} else
 	if (day == 03 || day == 14 || day == 19 || day == 30) {var rad = " 105 105,"} else
