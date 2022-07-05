@@ -190,7 +190,7 @@ function addDay() {
 	newMonthsRotation = (360/16 * month)-((360/16)/2);
 	newDaysRotation = (360/32 * day)-((360/32)/2);
 	localStorage.setItem('saveDate', newDate);
-//	location.reload()
+	location.reload()
 	}	
 
 //reset to 0101
