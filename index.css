@@ -16,7 +16,7 @@ body {
 
 #inputForm {
 	position: absolute;
-	left: 85px;
+	left: 50px;
 	top: 25px;
 	width: 1200px;
 	height: 50px; 
@@ -134,7 +134,7 @@ line {
 
 #moonDiv {
 	position: absolute; 
-	left: 850px; 
+	left: 800px; 
 	top: 125px; 
 	width: 200px; 
 	height: 200px;
@@ -154,7 +154,7 @@ line {
 
 table {
 	position: absolute; 
-	left: 100px; 
+	left: 50px; 
 	top: 1000px;
 	width:800px;
 	border: 3px solid;
