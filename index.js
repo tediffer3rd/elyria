@@ -171,7 +171,7 @@ function setDate() {
 	if (month <=16) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")}
 	}
 	
-// green 00ff0044 , yellow ffff0044 , orange FFA50044 , red ff000044 , purple 80008044 , blue 0000ff44
+// green 00ff0044 , yellow ffff0044 , orange FFA50044 , red ff000044 , purple 80008044 , blue 0000ff44tedi
 
 //add a day to the date
 function addDay() {
