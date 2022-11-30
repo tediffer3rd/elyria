@@ -29,7 +29,6 @@ var compassLineRotate = 0;
 var r = document.querySelector(':root');
 var rs = getComputedStyle(r);
 
-
 // create circular div element to hold svg
 var calendar = document.createElement('div');
 	calendar.setAttribute("id", "calendar");
@@ -161,16 +160,18 @@ function setDate() {
 	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
 	// change backgroundColor based on month
-	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#00ff0033")} else
-	if (month <= 3) {r.style.setProperty("--gradColor1", "#00ff0033"); r.style.setProperty("--gradColor2", "#00ff0033")} else
-	if (month <= 5) {r.style.setProperty("--gradColor1", "#00ff0033"); r.style.setProperty("--gradColor2", "#ff000033")} else
-	if (month <= 7) {r.style.setProperty("--gradColor1", "#ff000033"); r.style.setProperty("--gradColor2", "#ff000033")} else
-	if (month <= 9) {r.style.setProperty("--gradColor1", "#ff000033"); r.style.setProperty("--gradColor2", "#80008033")} else
-	if (month <=11) {r.style.setProperty("--gradColor1", "#80008033"); r.style.setProperty("--gradColor2", "#80008033")} else
-	if (month <=13) {r.style.setProperty("--gradColor1", "#80008033"); r.style.setProperty("--gradColor2", "#0000ff33")} else
-	if (month <=15) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#0000ff33")} else
-	if (month ==16) {r.style.setProperty("--gradColor1", "#0000ff33"); r.style.setProperty("--gradColor2", "#00ff0033")} ;
+	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")} else
+	if (month <= 2) {r.style.setProperty("--gradColor1", "#00ff0044"); r.style.setProperty("--gradColor2", "#00ff0044")} else
+	if (month <= 4) {r.style.setProperty("--gradColor1", "#00ff0044"); r.style.setProperty("--gradColor2", "#ffff0044")} else
+	if (month <= 6) {r.style.setProperty("--gradColor1", "#ffff0044"); r.style.setProperty("--gradColor2", "#ffa50044")} else
+	if (month <= 8) {r.style.setProperty("--gradColor1", "#ffa50044"); r.style.setProperty("--gradColor2", "#ff000044")} else
+	if (month <=10) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#ff000044")} else
+	if (month <=12) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#80008044")} else
+	if (month <=14) {r.style.setProperty("--gradColor1", "#80008044"); r.style.setProperty("--gradColor2", "#0000ff44")} else
+	if (month <=16) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")}
 	}
+	
+// green 00ff0044 , yellow ffff0044 , orange FFA50044 , red ff000044 , purple 80008044 , blue 0000ff44
 
 //add a day to the date
 function addDay() {
@@ -283,3 +284,17 @@ var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
 	svgMoon.appendChild(moonImage);
 
 setDate()
+
+// ********************************************** rec cal
+
+// create circular div element to hold svg
+var calendar = document.createElement('div');
+	calendar.setAttribute("id", "recCal");
+	document.body.appendChild(recCal);
+
+//create svg container
+var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg1.setAttribute("id", "svgrecCal");
+	svg1.setAttribute("height", (yOrigin * 2));
+	svg1.setAttribute("width" , (xOrigin * 3));
+	calendar.appendChild(svg1);

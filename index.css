@@ -84,8 +84,7 @@ body {
 	height: 800px;
 	border: 3px solid black; 
 	border-radius:50%; 
-/*	background: conic-gradient(from -17deg, #009900, #cc0000, #cc0000, #cc0000, #ff8000, #ff8000, #ff8000, #0000ff, #0000ff, #0000ff, #009900, #009900, #009900); */
-	background: conic-gradient(from 22.5deg, green, green, red, red, purple, purple, blue, blue, green);
+	background: conic-gradient(from 22.5deg, green, yellow, orange, red, purple, blue, green);
 }
 
 circle {
@@ -150,4 +149,22 @@ line {
 	fill: #333333;
 	stroke: #000000;
 	stroke-width: 1px;
+}
+
+table {
+	position: absolute; 
+	left: 900px; 
+	top: 400px;
+	width:400px;
+	border: 3px solid;
+	text-align: center;
+	border-collapse:collapse;
+	background:var(--gradColor2);
+}
+
+tr, td {
+	border: 3px solid;
+	text-align: center;
+	text-shadow: 1px 1px #ffffff;
+
 }
