@@ -168,6 +168,7 @@ function setDate() {
 	if (month <=10) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#ff000044")} else
 	if (month <=12) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#80008044")} else
 	if (month <=14) {r.style.setProperty("--gradColor1", "#80008044"); r.style.setProperty("--gradColor2", "#0000ff44")} else
+	if (month ==15) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#0000ff44")} else
 	if (month <=16) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")}
 	}
 	
