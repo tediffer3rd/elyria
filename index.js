@@ -151,7 +151,7 @@ function setDate() {
 	var day = Number(currentDate.slice(-2));
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
-	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' in the season of ' + seasons[season-1];
+	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' <br> in the season of ' + seasons[season-1];
 	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
