@@ -135,8 +135,10 @@ line {
 
 #moonDiv {
 	position: absolute; 
-	left: 800px; 
-	top: 125px; 
+/*	left: 800px; 
+	top: 125px; */
+	left: 300px; 
+	top: 1150px;
 	width: 200px; 
 	height: 200px;
 }
