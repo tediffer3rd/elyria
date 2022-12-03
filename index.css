@@ -21,7 +21,7 @@ border: 1px solid black;
 	top: 25px;
 	width: 800px;
 	height: 50px; 
-	border: 1px solid black; 
+	border: 3px solid black; 
 	padding: 0px;
 	margin: 0px;
 }
@@ -73,9 +73,9 @@ border: 1px solid black;
 	top: 100px;
 	width: 800px;
 	color: #ffffff;
-	font-size: 35px; 
+	font-size: 30px; 
 	font-weight: normal;
-/*	border: 1px solid black; */
+	border: 3px solid black;
 }
 
 #calendar {
@@ -137,7 +137,7 @@ line {
 #moonDiv {
 	position: absolute; 
 	left: 700px; 
-	top: 125px;
+	top: 150px;
 	width: 200px; 
 	height: 200px;
 }
