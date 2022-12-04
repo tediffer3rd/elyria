@@ -285,17 +285,3 @@ var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
 	svgMoon.appendChild(moonImage);
 
 setDate()
-
-// ********************************************** rec cal
-
-// create circular div element to hold svg
-var calendar = document.createElement('div');
-	calendar.setAttribute("id", "recCal");
-	document.body.appendChild(recCal);
-
-//create svg container
-var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	svg1.setAttribute("id", "svgrecCal");
-	svg1.setAttribute("height", (yOrigin * 2));
-	svg1.setAttribute("width" , (xOrigin * 2.25));
-	calendar.appendChild(svg1);
