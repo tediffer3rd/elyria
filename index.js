@@ -38,7 +38,7 @@ var calendar = document.createElement('div');
 var svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg1.setAttribute("id", "svg1");
 	svg1.setAttribute("height", (yOrigin * 2));
-	svg1.setAttribute("width" , (xOrigin * 2.25));
+	svg1.setAttribute("width" , (xOrigin * 2.125));
 	calendar.appendChild(svg1);
 
 // create big red circle
