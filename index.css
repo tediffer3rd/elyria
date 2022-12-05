@@ -7,6 +7,7 @@ body {
 	background-image: linear-gradient(to right, var(--gradColor1), #00000055, var(--gradColor2)),url("wp4110751.webp"); 
 	background-size: 950px;
 	background-attachment: fixed;
+	background-repeat: no-repeat;
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
 	text-shadow: 2px 2px 20px #000000;
@@ -169,6 +170,5 @@ tr, td {
 	border: 3px solid;
 	font-size: 40px; 
 	text-align: center;
-	text-shadow: 1px 1px #ffffff;
-
+	text-shadow: 2px 2px #ffffff;
 }
