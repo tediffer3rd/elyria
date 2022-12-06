@@ -5,7 +5,7 @@
 
 body {
 	background-image: linear-gradient(to right, var(--gradColor1), #00000055, var(--gradColor2)),url("wp4110751.webp"); 
-	background-size: 1000px;
+/*	background-size: 1000px; */
 	background-attachment: cover;
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
