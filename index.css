@@ -79,8 +79,8 @@ body {
 	position: absolute;
 	left: 50px;
 	top: 250px;
-	width: 800px;
-	height: 800px;
+	width: 900px;
+	height: 900px;
 	border: 3px solid black; 
 	border-radius:50%; 
 	background: conic-gradient(from 22.5deg, #00cc00, #cccc00, #cc8400, #cc0000, #660066, #0000cc, #00cc00);
