@@ -14,8 +14,8 @@ var data =  [
 	]
 
 //set variables for calendar
-var xOrigin = 450;
-var yOrigin = 450;
+var xOrigin = 400;
+var yOrigin = 400;
 var numPaths = (data.length+2); // data.length = number of arrays
 var yoffset = yOrigin / numPaths;
 var circleYoffset = yoffset;
