@@ -1,5 +1,5 @@
 
-
+//set arrays
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
 var dayNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
@@ -14,8 +14,8 @@ var data =  [
 	]
 
 //set variables for calendar
-var xOrigin = 400;
-var yOrigin = 400;
+var xOrigin = 450;
+var yOrigin = 450;
 var numPaths = (data.length+2); // data.length = number of arrays
 var yoffset = yOrigin / numPaths;
 var circleYoffset = yoffset;
@@ -96,7 +96,7 @@ for (var i = 0; i < data.length; i ++) {
 	var pointerLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pointerLine.setAttribute("id", "pointerLine" + ID);
 		pointerLine.setAttribute("class", "pointerLine");
-		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-15) + " , a 50 25 0 1 1 1 0");
+		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-20) + " , a 50 25 0 1 1 1 0");
 	svg1.appendChild(pointerLine);
 
 // set variables for segments & rotation
@@ -122,6 +122,7 @@ for (var i = 0; i < data.length; i ++) {
 //create text elements
 			var textJ = document.createElementNS("http://www.w3.org/2000/svg", "text");
 			textJ.setAttribute("id", ID + "textJ0" + (j+1));
+			textJ.setAttribute("class", "textJ");
 			textJ.setAttribute("x", xOrigin);
 			textJ.setAttribute("y", textYoffset);
 			textJ.setAttribute("fill", "#ffffff");
@@ -155,9 +156,9 @@ function setDate() {
 	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
-	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400 400)");
-	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400 400)");
-	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
+	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 450 450)");
+	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 450 450)");
+	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 450 450)");
 	localStorage.setItem('saveDate', currentDate);
 	// change backgroundColor based on month
 	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")} else
