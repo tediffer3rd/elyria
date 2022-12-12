@@ -79,8 +79,8 @@ body {
 	position: absolute;
 	left: 50px;
 	top: 250px;
-	width: 800px;
-	height: 800px;
+	width: 900px;
+	height: 900px;
 	border: 3px solid black; 
 	border-radius:50%; 
 	background: conic-gradient(from 22.5deg, #00cc00, #cccc00, #cc8400, #cc0000, #660066, #0000cc, #00cc00);
@@ -124,7 +124,7 @@ line {
 }
 
 .textJ {
-	font-size: 22px; 
+	font-size: 27px; 
 	font-weight: normal;
 	fill: #ffffff;
 	text-anchor: middle;
@@ -153,8 +153,8 @@ line {
 
 table {
 	position: absolute; 
-	left: 150px; 
-	top: 1100px;
+	left: 200px; 
+	top: 1200px;
 	width:600px;
 	border: 3px solid;
 	text-align: center;
@@ -163,8 +163,9 @@ table {
 }
 
 tr, td {
-	border: 3px solid;
-	font-size: 40px; 
+	border: 3px solid black;
+	color:white;
+	font-size: 30px;
+	text-shadow: 2px 2px 20px #000000;
 	text-align: center;
-	text-shadow: 2px 2px #ffffff;
 }
