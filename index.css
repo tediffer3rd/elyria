@@ -10,6 +10,7 @@ body {
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
 	text-shadow: 2px 2px 20px #000000;
+	text-align: center;
 }
 
 #main {}
@@ -22,6 +23,7 @@ body {
 	height: 50px; 
 	padding: 0px;
 	margin: 0px;
+	
 }
 
 #inputDate {
@@ -32,7 +34,7 @@ body {
 	margin: 0px;
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
-	
+	text-align: center;
 }
 	
 #setDateButton {
