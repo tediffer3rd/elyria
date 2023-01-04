@@ -16,7 +16,7 @@ var data =  [
 //set variables for calendar
 var xOrigin = 450;
 var yOrigin = 450;
-var numPaths = (data.length+2); // data.length = number of arrays
+var numPaths = (data.length+1); // data.length = number of arrays
 var yoffset = yOrigin / numPaths;
 var circleYoffset = yoffset;
 var textYoffset = yoffset/2;
@@ -96,7 +96,7 @@ for (var i = 0; i < data.length; i ++) {
 	var pointerLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pointerLine.setAttribute("id", "pointerLine" + ID);
 		pointerLine.setAttribute("class", "pointerLine");
-		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-20) + " , a 50 25 0 1 1 1 0");
+		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-35) + " , a 50 25 0 1 1 1 0");
 	svg1.appendChild(pointerLine);
 
 // set variables for segments & rotation
@@ -120,7 +120,12 @@ for (var i = 0; i < data.length; i ++) {
 			svg1.appendChild(textLine);
 			
 //create text elements
+			var textJG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+			textJG.setAttribute("transform", "rotate(" + textRotate + " " + xOrigin + ", " + yOrigin + ")");
+			svg1.appendChild(textJG);
+			
 			var textJ = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
 			textJ.setAttribute("id", ID + "textJ0" + (j+1));
 			textJ.setAttribute("class", "textJ");
 			textJ.setAttribute("x", xOrigin);
@@ -128,10 +133,11 @@ for (var i = 0; i < data.length; i ++) {
 			textJ.setAttribute("fill", "#ffffff");
 			textJ.setAttribute("text-anchor", "middle");
 			textJ.setAttribute("alignment-baseline", "middle");
-			textJ.setAttribute("transform", "rotate(" + textRotate + " " + xOrigin + ", " + yOrigin + ")");
 			textJ.setAttribute("onclick", "clickData(this.id)");
 			textJ.appendChild(document.createTextNode(textDataContent));
-			svg1.appendChild(textJ);
+			textJG.appendChild(textJ);
+			var textJBBox = textJ.getBBox();
+			textJ.setAttribute("transform", "rotate(" + -textRotate + " " + (textJBBox.x+(textJBBox.width/2)) + " " + (textJBBox.y+(textJBBox.height/2)) + ")");
 			textLineRotate += rotateAngle
 			textRotate += rotateAngle
 		}
