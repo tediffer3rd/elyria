@@ -172,3 +172,10 @@ tr, td {
 	font-size: 30px;
 	text-align: center;
 }
+
+tr.show_top > td, td.hide_all{
+	border-right-style:hidden;
+	border-left-style:hidden;
+	border-bottom-style:hidden;
+	background:none;
+}
