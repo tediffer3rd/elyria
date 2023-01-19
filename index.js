@@ -22,8 +22,6 @@ var circleYoffset = yoffset;
 var textYoffset = yoffset/2;
 var yEnd = yOrigin - (yOrigin / numPaths);
 var circleNum = 1;
-//var pointerLineWidth = 10;
-//var pointerLineWidthAdjust = 5
 var compassLineRotateAngle = 45;
 var compassLineRotate = 0;
 var r = document.querySelector(':root');
@@ -54,7 +52,7 @@ var littleBlackDot = document.createElementNS("http://www.w3.org/2000/svg", "cir
 	littleBlackDot.setAttribute("id", "littleBlackDot");
 	littleBlackDot.setAttribute("cx", xOrigin);
 	littleBlackDot.setAttribute("cy", yOrigin);
-	littleBlackDot.setAttribute("r", "20");
+	littleBlackDot.setAttribute("r", "15");
 	littleBlackDot.setAttribute("fill", "#000000");
 	svg1.appendChild(littleBlackDot);
 
@@ -78,11 +76,14 @@ for (var i = 0; i < data.length; i ++) {
 //set id names bases on itteration
 	if (i == 0) {
 		var ID = "days";
+		var arc = "30 50";
 	} else if (i == 1) {
 		var ID = "months";
-	} else if (i == 2) {
+		var arc = "50 50";
+		} else if (i == 2) {
 		var ID = "seasons";
-	} else {}
+		var arc = "100 50";
+		} else {}
 	
 // create path dividing circles
 	var dividingCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -96,8 +97,11 @@ for (var i = 0; i < data.length; i ++) {
 	var pointerLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pointerLine.setAttribute("id", "pointerLine" + ID);
 		pointerLine.setAttribute("class", "pointerLine");
-		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a 50 50 0 1 1 1 0");
+//		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a 50 50 0 1 1 1 0");
+		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a " + arc + " 0 1 1 1 0");
 	svg1.appendChild(pointerLine);
+	
+// a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
 
 // set variables for segments & rotation
 		var numSegments = dataItem.length;
