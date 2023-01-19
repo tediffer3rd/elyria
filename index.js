@@ -76,7 +76,7 @@ for (var i = 0; i < data.length; i ++) {
 //set id names bases on itteration
 	if (i == 0) {
 		var ID = "days";
-		var arc = "30 50";
+		var arc = "30 50"; 
 	} else if (i == 1) {
 		var ID = "months";
 		var arc = "50 50";
