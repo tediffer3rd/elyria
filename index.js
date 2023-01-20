@@ -85,7 +85,7 @@ for (var i = 0; i < data.length; i ++) {
 		} else if (i == 2) {
 		var ID = "seasons";
 //		var arc = "a 100 50 0 1 1 1 0";
-		var arc = "a 100 100 0 0 0 -80 25, l -67 -67, a 200 200 0 0 1 295 0, l -67 67, a 100 100 0 0 0 -80 -25"; 
+		var arc = "a 150 150 0 0 0 -80 25, l -67 -67, a 200 200 0 0 1 295 0, l -67 67, a 150 150 0 0 0 -80 -25"; 
 		} else {}
 	
 // create path dividing circles
