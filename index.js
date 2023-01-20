@@ -76,13 +76,16 @@ for (var i = 0; i < data.length; i ++) {
 //set id names bases on itteration
 	if (i == 0) {
 		var ID = "days";
-		var arc = "30 50"; 
+//		var arc = "a 30 50 0 1 1 1 0"; 
+		var arc = "a 1000 1000 0 0 0 -28 1, l -10 -102, a 300 300 0 0 1 76 0, l -10 102, a 100 100 0 0 0 -28 -1"; 
 	} else if (i == 1) {
 		var ID = "months";
-		var arc = "50 50";
+//		var arc = "a 50 50 0 1 1 1 0";
+		var arc = "a 1000 1000 0 0 0 -38 1, l -20 -95, a 300 300 0 0 1 115 0, l -20 95, a 1000 1000 0 0 0 -38 -1"; 
 		} else if (i == 2) {
 		var ID = "seasons";
-		var arc = "100 50";
+//		var arc = "a 100 50 0 1 1 1 0";
+		var arc = "a 100 100 0 0 0 -80 25, l -67 -67, a 200 200 0 0 1 295 0, l -67 67, a 100 100 0 0 0 -80 -25"; 
 		} else {}
 	
 // create path dividing circles
@@ -98,7 +101,8 @@ for (var i = 0; i < data.length; i ++) {
 		pointerLine.setAttribute("id", "pointerLine" + ID);
 		pointerLine.setAttribute("class", "pointerLine");
 //		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a 50 50 0 1 1 1 0");
-		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a " + arc + " 0 1 1 1 0");
+//		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a " + arc + " 0 1 1 1 0");
+		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , " + arc);
 	svg1.appendChild(pointerLine);
 	
 // a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
