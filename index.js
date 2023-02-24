@@ -2,15 +2,13 @@
 //set arrays
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
-var daytime = ["Early afternoon", "Late afternoon", "Early evening", " Late evening", "Early night", "Late night", "Early morning", "Late morning"]
-var time = ["12 noon", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12 midnight", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", ]
+var time = ["12 noon", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm", "8 pm", "9 pm", "10 pm", "11 pm", "12 midnight", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", "9 am", "10 am", "11 am", ]
 var dayNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
 var weekdays = ["Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas"];
 var easyDays = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twnetieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth','thitieth', 'thirty-first', 'thirty-second'];
 var blankArray = []
 
 var data =  [
-/*	Array.from(daytime).map(String), */
 	Array.from(time).map(String),
 	Array.from(dayNums).map(String),
 	Array.from(months).map(String),
@@ -30,22 +28,6 @@ var compassLineRotateAngle = 45;
 var compassLineRotate = 0;
 var r = document.querySelector(':root');
 var rs = getComputedStyle(r);
-var bgcolor1 = "#00A626"
-var bgcolor2 = "#26CC00"
-var bgcolor3 = "#73CC00"
-var bgcolor4 = "#BFCC00"
-var bgcolor5 = "#CCB600"
-var bgcolor6 = "#CC9A00"
-var bgcolor7 = ""
-var bgcolor8 = ""
-var bgcolor9 = ""
-var bgcolor10 = ""
-var bgcolor11 = ""
-var bgcolor12 = ""
-var bgcolor13 = ""
-var bgcolor14 = ""
-var bgcolor15 = ""
-var bgcolor16 = ""
 
 // create div element to hold clock
 var clock = document.createElement('div');
@@ -119,7 +101,7 @@ for (var i = 0; i < data.length; i ++) {
 		var circum2 = rad2 * 2 * 3.14;
 		var pointerTop = circum2 / numSegments;
 		
-//set id names bases on itteration
+//set id n ames bases on itteration
 	if (i == 0) {
 		var ID = "time";
 		var pointerLinePath = "M " + xOrigin + " " + (circleYoffset) + ",a " + rad1 + " " + rad1 + " 0 0 1 " + (pointerBottom) + " " + (12) + ", l " + (22) + " -" + (yoffset-2) + ", a " + rad2 + " " + rad2 + " 0 0 0 " + (-pointerTop) + " " + (-15) + ", l 0 " + (yoffset) + " Z";  
@@ -206,7 +188,9 @@ function setDate() {
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
 	var currentTime = localStorage.getItem('saveTime');
-	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' <br> in the season of ' + seasons[season-1];
+	var tod = 0
+	if (currentTime == 1) {var tod = "Noon"} else if (currentTime < 13) {var tod = currentTime-1 + " pm"} else if (currentTime == 13) {var tod = "Midnight"} else if (currentTime > 12) {var tod = (currentTime-13) + " am"};
+	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' <br> in the season of ' + seasons[season-1] + ". <br> The time of day is approximately " + tod;
 	seasonsRotation = (360/4 * season)-((360/4));
 	monthsRotation = (360/16 * month)-((360/16));
 	daysRotation = (360/32 * day)-((360/32));
@@ -234,9 +218,6 @@ function setDate() {
 	if (month ==15) {r.style.setProperty("--gradColor1", "#000DBF44"); r.style.setProperty("--gradColor3", "#000DBF"); r.style.setProperty("--gradColor2", "#CC7B0044"); r.style.setProperty("--gradColor4", "#CC7B00")}
 	if (month ==16) {r.style.setProperty("--gradColor1", "#00597444"); r.style.setProperty("--gradColor3", "#005974"); r.style.setProperty("--gradColor2", "#CC4A0044"); r.style.setProperty("--gradColor4", "#CC4A00")}
 	}
-	
-// green #00cc0044, yellow #cccc0044 , orange #ccA50044 , red #cc000044 , purple #80008044 , blue #0000cc44
-// green 00cc00, yelow-green #aacc00, yellow #cccc00, orange #ccA500, red #cc0000, purple #800080, blue #0000cc, blue-green #00cccc
 
 //add a day to the date
 function addDay() {
@@ -251,7 +232,6 @@ function addDay() {
 	var newDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
 	document.getElementById('inputDate').value = newDate;
 	var weekday = weekdays[day-1];
-//	document.getElementById('displayDate').innerHTML = 'The current date is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' in the season of ' + seasons[season-1];
 	newSeasonsRotation = (360/4 * season)-((360/4)/2);
 	newMonthsRotation = (360/16 * month)-((360/16)/2);
 	newDaysRotation = (360/32 * day)-((360/32)/2);
