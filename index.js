@@ -132,8 +132,6 @@ for (var i = 0; i < data.length; i ++) {
 		pointerLine.setAttribute("d", pointerLinePath);
 	svg1.appendChild(pointerLine);
 
-// a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
-
 // itterate through the contents of the array
 		for (var j = 0; j < dataItem.length; j ++) {
 			var textDataContent = dataItem[j];
@@ -328,7 +326,6 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 // create image element to hold moon image file
 var moonImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
 	moonImage.setAttribute("id", "moonImage");
-//	moonImage.setAttribute("href", "redmoon.png");
 	moonImage.setAttribute("href", "venus.jpg");
 	moonImage.setAttribute("height", "200");
 	moonImage.setAttribute("width", "200");
