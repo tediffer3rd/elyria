@@ -5,15 +5,12 @@
 }
 
 body {
-/*	background-image: linear-gradient(to right, var(--gradColor1), #00000055, var(--gradColor2)),url("wp4110751.webp"); */
-/*	background-image: linear-gradient(to right, var(--gradColor1), var(--gradColor2), var(--gradColor1)),url("wayfinders.webp"); */
 	background-image: url("wayfinders.webp"); 
 	background-size: 600px; 
 	background-attachment: fixed;
 	opacity: 0.5
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
-/*	text-shadow: 0px 0px 5px #000000; */
 	text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3px -3px 3px #000000, 0px 3px 3px #000000, 3px 0px 3px #000000, -3px 0px 3px #000000, 0px -3px 3px #000000;
 	text-align: center;
 }
@@ -28,7 +25,6 @@ body {
 	height: 50px; 
 	padding: 0px;
 	margin: 0px;
-	
 }
 
 #inputDate {
@@ -92,8 +88,6 @@ body {
 	border: 3px solid black; 
 	border-radius:50%; 
 	background: conic-gradient(from 22.5deg, #00cc00, #cccc00, #cc8400, #cc0000, #660066, #0000cc, #00cc00);
-/*	background: conic-gradient(#00cc00aa 0deg 45deg, #aacc00aa 45deg 90deg, #cccc00aa 90deg 135deg, #ccA500aa 135deg 180deg, #cc0000aa 180deg 225deg, #800080aa 225deg 270deg, #0000ccaa 270deg 315deg, #00ccccaa 315deg 360deg); */
-	/* green 00cc00, yelow-green #aacc00, yellow #cccc00, orange #ccA500, red #cc0000, purple #800080, blue #0000cc, blue-green #00cccc */
 	}
 
 circle {
@@ -126,28 +120,6 @@ line {
 	stroke-width: none; 
 	fill: var(--gradColor3)
 	}
-
-
-/*#pointerLinetime {
-	stroke-width: 3px; 
-	fill: var(--gradColor3);
-}
-
-
-#pointerLinedays {
-	stroke-width: 10px; 
-	fill: var(--gradColor3)
-}
-
-#pointerLinemonths {
-	stroke-width: 10px; 
-	fill: var(--gradColor3)
-}
-
-#pointerLineseasons {
-	stroke-width: 10px;
-	fill: var(--gradColor3)
-} */
 
 .textJ {
 	font-size: 27px; 
@@ -194,4 +166,3 @@ tr, td {
 	font-size: 30px;
 	text-align: center;
 }
-
