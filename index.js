@@ -2,12 +2,16 @@
 //set arrays
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
+var daytime = ["Early afternoon", "Late afternoon", "Early evening", " Late evening", "Early night", "Late night", "Early morning", "Late morning"]
+var time = ["12 noon", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12 midnight", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", ]
 var dayNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
 var weekdays = ["Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas"];
 var easyDays = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twnetieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth','thitieth', 'thirty-first', 'thirty-second'];
 var blankArray = []
 
 var data =  [
+/*	Array.from(daytime).map(String), */
+	Array.from(time).map(String),
 	Array.from(dayNums).map(String),
 	Array.from(months).map(String),
 	Array.from(seasons).map(String),
@@ -26,6 +30,27 @@ var compassLineRotateAngle = 45;
 var compassLineRotate = 0;
 var r = document.querySelector(':root');
 var rs = getComputedStyle(r);
+var bgcolor1 = "#00A626"
+var bgcolor2 = "#26CC00"
+var bgcolor3 = "#73CC00"
+var bgcolor4 = "#BFCC00"
+var bgcolor5 = "#CCB600"
+var bgcolor6 = "#CC9A00"
+var bgcolor7 = ""
+var bgcolor8 = ""
+var bgcolor9 = ""
+var bgcolor10 = ""
+var bgcolor11 = ""
+var bgcolor12 = ""
+var bgcolor13 = ""
+var bgcolor14 = ""
+var bgcolor15 = ""
+var bgcolor16 = ""
+
+// create div element to hold clock
+var clock = document.createElement('div');
+	clock.setAttribute("id", "clock");
+	document.body.appendChild(clock);
 
 // create circular div element to hold svg
 var calendar = document.createElement('div');
@@ -47,14 +72,23 @@ var bigRedCircle = document.createElementNS("http://www.w3.org/2000/svg", "circl
 	bigRedCircle.setAttribute("r",xOrigin);
 //	svg1.appendChild(bigRedCircle);
 
-// create little black dot in middle of big red circle
+// create large dot in middle of big circle
 var littleBlackDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 	littleBlackDot.setAttribute("id", "littleBlackDot");
 	littleBlackDot.setAttribute("cx", xOrigin);
 	littleBlackDot.setAttribute("cy", yOrigin);
-	littleBlackDot.setAttribute("r", "15");
+	littleBlackDot.setAttribute("r", circleYoffset);
 	littleBlackDot.setAttribute("fill", "#000000");
 	svg1.appendChild(littleBlackDot);
+
+// create small dot in middle of large dot
+var centerCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	centerCircle.setAttribute("id", "centerCircle");
+	centerCircle.setAttribute("cx", xOrigin);
+	centerCircle.setAttribute("cy", yOrigin);
+	centerCircle.setAttribute("r", "30");
+	centerCircle.setAttribute("fill", "#000000");
+	svg1.appendChild(centerCircle);
 
 // create 8 cardinal compass lines
 for (var i = 1; i <= 4; i ++) {
@@ -73,21 +107,34 @@ for (var i = 1; i <= 4; i ++) {
 for (var i = 0; i < data.length; i ++) {
 	var dataItem = data[i];
 
+// set variables for segments & rotation
+		var numSegments = dataItem.length;
+		var rotateAngle = 360/numSegments;
+		var textRotate = rotateAngle/2;
+		var textLineRotate = rotateAngle;
+		var rad1 = xOrigin - circleYoffset;
+		var circum1 = rad1 * 2 * 3.14;
+		var pointerBottom = circum1 / numSegments;
+		var rad2 = xOrigin - circleYoffset + yoffset;
+		var circum2 = rad2 * 2 * 3.14;
+		var pointerTop = circum2 / numSegments;
+		
 //set id names bases on itteration
 	if (i == 0) {
+		var ID = "time";
+		var pointerLinePath = "M " + xOrigin + " " + (circleYoffset) + ",a " + rad1 + " " + rad1 + " 0 0 1 " + (pointerBottom) + " " + (12) + ", l " + (22) + " -" + (yoffset-2) + ", a " + rad2 + " " + rad2 + " 0 0 0 " + (-pointerTop) + " " + (-15) + ", l 0 " + (yoffset) + " Z";  
+		} else if (i == 1) {
 		var ID = "days";
-//		var arc = "a 30 50 0 1 1 1 0"; 
-		var arc = "a 1000 1000 0 0 0 -28 1, l -10 -102, a 300 300 0 0 1 76 0, l -10 102, a 100 100 0 0 0 -28 -1"; 
-	} else if (i == 1) {
-		var ID = "months";
-//		var arc = "a 50 50 0 1 1 1 0";
-		var arc = "a 1000 1000 0 0 0 -38 1, l -20 -95, a 300 300 0 0 1 115 0, l -20 95, a 1000 1000 0 0 0 -38 -1"; 
+		var pointerLinePath = "M " + xOrigin + " " + (circleYoffset) + ",a " + rad1 + " " + rad1 + " 0 0 1 " + (pointerBottom) + " " + (5)  + ", l " + (17) + " -" + (yoffset-3)   + ", a " + rad2 + " " + rad2 + " 0 0 0 " + (-pointerTop) + " " + (-7) + ", l 0 " + " " + (yoffset) + " Z";
 		} else if (i == 2) {
+		var ID = "months";
+		var pointerLinePath = "M " + xOrigin + " " + (circleYoffset) + ",a " + rad1 + " " + rad1 + " 0 0 1 " + (pointerBottom-1) + " " + (15) + ", l " + (33) + " -" + (yoffset-7) + ", a " + rad2 + " " + rad2 + " 0 0 0 " + (-pointerTop+3) + " " + (-20) + ", l 0 " + " " + (yoffset) + " Z"; 
+		} else if (i == 3) {
 		var ID = "seasons";
-//		var arc = "a 100 50 0 1 1 1 0";
-		var arc = "a 150 150 0 0 0 -80 25, l -67 -67, a 200 200 0 0 1 295 0, l -67 67, a 150 150 0 0 0 -80 -25"; 
-		} else {}
-	
+		var pointerLinePath = "M " + xOrigin + " " + (circleYoffset) + ",a " + rad1 + " " + rad1 + " 0 0 1 " + (yoffset) + " " + (yoffset)  + ", l " + (yoffset-1) + " -" + (0)    + ", a " + rad2 + " " + rad2 + " 0 0 0 " + (-yoffset*2) + " " + (-yoffset*2) + ", l 0 " + " " + (yoffset) + " Z"; 
+		} else {
+	}
+
 // create path dividing circles
 	var dividingCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 		dividingCircle.setAttribute("id", ID + "circle" + i);
@@ -96,22 +143,14 @@ for (var i = 0; i < data.length; i ++) {
 		dividingCircle.setAttribute("r", (yOrigin - circleYoffset));
 		svg1.appendChild(dividingCircle);
 
-// create pointer lines
+	// create pointer lines
 	var pointerLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pointerLine.setAttribute("id", "pointerLine" + ID);
 		pointerLine.setAttribute("class", "pointerLine");
-//		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a 50 50 0 1 1 1 0");
-//		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , a " + arc + " 0 1 1 1 0");
-		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-5) + " , " + arc);
+		pointerLine.setAttribute("d", pointerLinePath);
 	svg1.appendChild(pointerLine);
-	
-// a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
 
-// set variables for segments & rotation
-		var numSegments = dataItem.length;
-		var rotateAngle = 360/numSegments;
-		var textRotate = rotateAngle/2;
-		var textLineRotate = rotateAngle;
+// a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
 
 // itterate through the contents of the array
 		for (var j = 0; j < dataItem.length; j ++) {
@@ -133,7 +172,6 @@ for (var i = 0; i < data.length; i ++) {
 			svg1.appendChild(textJG);
 			
 			var textJ = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
 			textJ.setAttribute("id", ID + "textJ0" + (j+1));
 			textJ.setAttribute("class", "textJ");
 			textJ.setAttribute("x", xOrigin);
@@ -144,6 +182,7 @@ for (var i = 0; i < data.length; i ++) {
 			textJ.setAttribute("onclick", "clickData(this.id)");
 			textJ.appendChild(document.createTextNode(textDataContent));
 			textJG.appendChild(textJ);
+
 			var textJBBox = textJ.getBBox();
 			textJ.setAttribute("transform", "rotate(" + -textRotate + " " + (textJBBox.x+(textJBBox.width/2)) + " " + (textJBBox.y+(textJBBox.height/2)) + ")");
 			textLineRotate += rotateAngle
@@ -166,28 +205,38 @@ function setDate() {
 	var day = Number(currentDate.slice(-2));
 	var season = Number(Math.ceil(month/4));
 	var weekday = weekdays[day-1];
+	var currentTime = localStorage.getItem('saveTime');
 	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' <br> in the season of ' + seasons[season-1];
-	seasonsRotation = (360/4 * season)-((360/4)/2);
-	monthsRotation = (360/16 * month)-((360/16)/2);
-	daysRotation = (360/32 * day)-((360/32)/2);
+	seasonsRotation = (360/4 * season)-((360/4));
+	monthsRotation = (360/16 * month)-((360/16));
+	daysRotation = (360/32 * day)-((360/32));
+	timeRotation = (360/24 * currentTime)-((360/24));
 	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 450 450)");
 	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 450 450)");
 	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 450 450)");
+	pointerLinetime.setAttribute("transform", "rotate(" + timeRotation + " 450 450)");
 	localStorage.setItem('saveDate', currentDate);
 	// change backgroundColor based on month
-	if (month == 1) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")} else
-	if (month <= 2) {r.style.setProperty("--gradColor1", "#00ff0044"); r.style.setProperty("--gradColor2", "#00ff0044")} else
-	if (month <= 4) {r.style.setProperty("--gradColor1", "#00ff0044"); r.style.setProperty("--gradColor2", "#ffff0044")} else
-	if (month <= 6) {r.style.setProperty("--gradColor1", "#ffff0044"); r.style.setProperty("--gradColor2", "#ffa50044")} else
-	if (month <= 8) {r.style.setProperty("--gradColor1", "#ffa50044"); r.style.setProperty("--gradColor2", "#ff000044")} else
-	if (month <=10) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#ff000044")} else
-	if (month <=12) {r.style.setProperty("--gradColor1", "#ff000044"); r.style.setProperty("--gradColor2", "#80008044")} else
-	if (month <=14) {r.style.setProperty("--gradColor1", "#80008044"); r.style.setProperty("--gradColor2", "#0000ff44")} else
-	if (month ==15) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#0000ff44")} else
-	if (month <=16) {r.style.setProperty("--gradColor1", "#0000ff44"); r.style.setProperty("--gradColor2", "#00ff0044")}
+	if (month == 1) {r.style.setProperty("--gradColor1", "#00A62644"); r.style.setProperty("--gradColor3", "#00A626"); r.style.setProperty("--gradColor2", "#CC180044"); r.style.setProperty("--gradColor4", "#CC1800")} else
+	if (month == 2) {r.style.setProperty("--gradColor1", "#26CC0044"); r.style.setProperty("--gradColor3", "#26CC00"); r.style.setProperty("--gradColor2", "#BA001244"); r.style.setProperty("--gradColor4", "#BA0012")} else
+	if (month == 3) {r.style.setProperty("--gradColor1", "#73CC0044"); r.style.setProperty("--gradColor3", "#73CC00"); r.style.setProperty("--gradColor2", "#93003844"); r.style.setProperty("--gradColor4", "#930038")} else
+	if (month == 4) {r.style.setProperty("--gradColor1", "#BFCC0044"); r.style.setProperty("--gradColor3", "#BFCC00"); r.style.setProperty("--gradColor2", "#6D005E44"); r.style.setProperty("--gradColor4", "#6D005E")} else
+	if (month == 5) {r.style.setProperty("--gradColor1", "#CCB60044"); r.style.setProperty("--gradColor3", "#CCB600"); r.style.setProperty("--gradColor2", "#46008544"); r.style.setProperty("--gradColor4", "#460085")} else
+	if (month == 6) {r.style.setProperty("--gradColor1", "#CC9A0044"); r.style.setProperty("--gradColor3", "#CC9A00"); r.style.setProperty("--gradColor2", "#1F00AD44"); r.style.setProperty("--gradColor4", "#1F00AD")} else
+	if (month == 7) {r.style.setProperty("--gradColor1", "#CC7B0044"); r.style.setProperty("--gradColor3", "#CC7B00"); r.style.setProperty("--gradColor2", "#000DBF44"); r.style.setProperty("--gradColor4", "#000DBF")} else
+	if (month == 8) {r.style.setProperty("--gradColor1", "#CC4A0044"); r.style.setProperty("--gradColor3", "#CC4A00"); r.style.setProperty("--gradColor2", "#00597444"); r.style.setProperty("--gradColor4", "#005974")} else
+	if (month == 9) {r.style.setProperty("--gradColor1", "#CC180044"); r.style.setProperty("--gradColor3", "#CC1800"); r.style.setProperty("--gradColor2", "#00A62644"); r.style.setProperty("--gradColor4", "#00A626")} else
+	if (month ==10) {r.style.setProperty("--gradColor1", "#BA001244"); r.style.setProperty("--gradColor3", "#BA0012"); r.style.setProperty("--gradColor2", "#26CC0044"); r.style.setProperty("--gradColor4", "#26CC00")} else
+	if (month ==11) {r.style.setProperty("--gradColor1", "#93003844"); r.style.setProperty("--gradColor3", "#930038"); r.style.setProperty("--gradColor2", "#73CC0044"); r.style.setProperty("--gradColor4", "#73CC00")} else
+	if (month ==12) {r.style.setProperty("--gradColor1", "#6D005E44"); r.style.setProperty("--gradColor3", "#6D005E"); r.style.setProperty("--gradColor2", "#BFCC0044"); r.style.setProperty("--gradColor4", "#BFCC00")} else
+	if (month ==13) {r.style.setProperty("--gradColor1", "#46008544"); r.style.setProperty("--gradColor3", "#460085"); r.style.setProperty("--gradColor2", "#CCB60044"); r.style.setProperty("--gradColor4", "#CCB600")} else
+	if (month ==14) {r.style.setProperty("--gradColor1", "#1F00AD44"); r.style.setProperty("--gradColor3", "#1F00AD"); r.style.setProperty("--gradColor2", "#CC9A0044"); r.style.setProperty("--gradColor4", "#CC9A00")} else
+	if (month ==15) {r.style.setProperty("--gradColor1", "#000DBF44"); r.style.setProperty("--gradColor3", "#000DBF"); r.style.setProperty("--gradColor2", "#CC7B0044"); r.style.setProperty("--gradColor4", "#CC7B00")}
+	if (month ==16) {r.style.setProperty("--gradColor1", "#00597444"); r.style.setProperty("--gradColor3", "#005974"); r.style.setProperty("--gradColor2", "#CC4A0044"); r.style.setProperty("--gradColor4", "#CC4A00")}
 	}
 	
-// green 00ff0044 , yellow ffff0044 , orange FFA50044 , red ff000044 , purple 80008044 , blue 0000ff44tedi
+// green #00cc0044, yellow #cccc0044 , orange #ccA50044 , red #cc000044 , purple #80008044 , blue #0000cc44
+// green 00cc00, yelow-green #aacc00, yellow #cccc00, orange #ccA500, red #cc0000, purple #800080, blue #0000cc, blue-green #00cccc
 
 //add a day to the date
 function addDay() {
@@ -214,6 +263,8 @@ function addDay() {
 function resetDate() {
 	localStorage.setItem('saveDate', "0101");
 	document.getElementById('inputDate').value = "0101";
+	localStorage.setItem('saveDate', "0101");
+	
 	location.reload(); 
 }
 
@@ -235,8 +286,13 @@ function clickData (clicked_id) {
 //		alert("you are setting the date to: " + clickedDate);
 		document.getElementById('inputDate').value = clickedDate;
 	localStorage.setItem('saveDate', clickedDate);
+	} else
+	if (clicked_id.startsWith("time")) {
+		var time = Number(clicked_id.slice(-2));
+	localStorage.setItem('saveTime', time);
 	}
-	location.reload();
+	
+location.reload();
 }
 	
 // MOON

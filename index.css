@@ -1,17 +1,20 @@
 :root {
   --gradColor1: #00000088;
   --gradColor2: #00000088;
+  --gradColor3: #00000088;
 }
 
 body {
-	background-image: linear-gradient(to right, var(--gradColor1), #00000055, var(--gradColor2)),url("wp4110751.webp"); 
-	background-size: 1000px; 
+/*	background-image: linear-gradient(to right, var(--gradColor1), #00000055, var(--gradColor2)),url("wp4110751.webp"); */
+/*	background-image: linear-gradient(to right, var(--gradColor1), var(--gradColor2), var(--gradColor1)),url("wayfinders.webp"); */
+	background-image: url("wayfinders.webp"); 
+	background-size: 600px; 
 	background-attachment: fixed;
+	opacity: 0.5
 	font-family: "Sofia", sans-serif;
 	font-size: 23px;
 /*	text-shadow: 0px 0px 5px #000000; */
-text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3px -3px 3px #000000, 0px 3px 3px #000000, 3px 0px 3px #000000, -3px 0px 3px #000000, 0px -3px 3px #000000;
-
+	text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3px -3px 3px #000000, 0px 3px 3px #000000, 3px 0px 3px #000000, -3px 0px 3px #000000, 0px -3px 3px #000000;
 	text-align: center;
 }
 
@@ -85,15 +88,17 @@ text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3
 	top: 250px;
 	width: 900px;
 	height: 900px;
+	margin:0px;
 	border: 3px solid black; 
 	border-radius:50%; 
 	background: conic-gradient(from 22.5deg, #00cc00, #cccc00, #cc8400, #cc0000, #660066, #0000cc, #00cc00);
-	/*// green #00cc00 , yellow #cccc00 , orange #cc8400 , red #cc0000 , purple #660066 , blue #0000cc */
-}
+/*	background: conic-gradient(#00cc00aa 0deg 45deg, #aacc00aa 45deg 90deg, #cccc00aa 90deg 135deg, #ccA500aa 135deg 180deg, #cc0000aa 180deg 225deg, #800080aa 225deg 270deg, #0000ccaa 270deg 315deg, #00ccccaa 315deg 360deg); */
+	/* green 00cc00, yelow-green #aacc00, yellow #cccc00, orange #ccA500, red #cc0000, purple #800080, blue #0000cc, blue-green #00cccc */
+	}
 
 circle {
 	stroke: black;
-	stroke-width: 3;
+	stroke-width: 3px;
 	fill: none;
 }
 	
@@ -102,7 +107,12 @@ circle {
 }
 
 #littleBlackDot {
-	fill: #000000;
+	fill: var(--gradColor3);
+}
+
+#centerCircle {
+	fill: var(--gradColor4);
+	stroke: none;
 }
 
 line {
@@ -113,19 +123,31 @@ line {
 .pointerLine {
 	stroke: #000000; 
 	stroke-linecap: round;
+	stroke-width: none; 
+	fill: var(--gradColor3)
+	}
+
+
+/*#pointerLinetime {
+	stroke-width: 3px; 
+	fill: var(--gradColor3);
 }
+
 
 #pointerLinedays {
 	stroke-width: 10px; 
+	fill: var(--gradColor3)
 }
 
 #pointerLinemonths {
-	stroke-width: 15px; 
+	stroke-width: 10px; 
+	fill: var(--gradColor3)
 }
 
 #pointerLineseasons {
-	stroke-width: 20px; 
-}
+	stroke-width: 10px;
+	fill: var(--gradColor3)
+} */
 
 .textJ {
 	font-size: 27px; 
@@ -163,7 +185,7 @@ table {
 	border: 3px solid;
 	text-align: center;
 	border-collapse:collapse;
-	background:var(--gradColor2);
+	background:var(--gradColor3);
 }
 
 tr, td {
@@ -173,9 +195,3 @@ tr, td {
 	text-align: center;
 }
 
-tr.show_top > td, td.hide_all{
-	border-right-style:hidden;
-	border-left-style:hidden;
-	border-bottom-style:hidden;
-	background:none;
-}
