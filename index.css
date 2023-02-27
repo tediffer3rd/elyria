@@ -6,7 +6,7 @@
 
 body {
 	background-image: url("wayfinders.jpg"); 
-	background-size: 600px; 
+	background-size: 504px; 
 	background-attachment: fixed;
 	opacity: 0.5
 	font-family: "Sofia", sans-serif;
@@ -153,7 +153,6 @@ table {
 	position: absolute; 
 	left: 50px; 
 	top: 1200px;
-	width:900px;
 	border: 3px solid;
 	text-align: center;
 	border-collapse:collapse;
@@ -165,4 +164,19 @@ tr, td {
 	color:white;
 	font-size: 30px;
 	text-align: center;
+	width:108px;
+}
+
+.banner {
+		background:var(--gradColor4);
+}
+
+#blank {
+	position: absolute;
+	left: 50px;
+	top: 1400px;
+	width: 800px;
+	color: #ffffff;
+	font-size: 30px; 
+	font-weight: normal;
 }
