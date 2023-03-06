@@ -10,21 +10,24 @@ body {
 	background-attachment: fixed;
 	opacity: 0.5
 	font-family: "Sofia", sans-serif;
-	font-size: 23px;
-	text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3px -3px 3px #000000, 0px 3px 3px #000000, 3px 0px 3px #000000, -3px 0px 3px #000000, 0px -3px 3px #000000;
+	font-size: 30px;
+	font-weight: normal;
+	text-shadow: 3px 3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, -3px -3px 3px #000000, 3px 3px 3px #000000, 3px 3px 3px #000000, -3px 3px 3px #000000, 3px -3px 3px #000000;
 	text-align: center;
+	overflow:auto:auto;
 }
 
-#main {}
+#main {	}
 
-#inputForm {
+#inputDateForm {
 	position: absolute;
 	left: 50px;
 	top: 25px;
-	width: 800px;
+	width: 900px;
 	height: 50px; 
 	padding: 0px;
 	margin: 0px;
+	border: 0px solid black; 
 }
 
 #inputDate {
@@ -72,10 +75,22 @@ body {
 	position: absolute;
 	left: 50px;
 	top: 100px;
-	width: 800px;
+	width: 900px;
 	color: #ffffff;
-	font-size: 30px; 
 	font-weight: normal;
+	text-align: left;
+	border: 0px solid black; 
+}
+
+#displayTime {
+	position: absolute;
+	left: 50px;
+	top: 150px;
+	width: 900px;
+	color: #ffffff;
+	font-size: 23px; 
+	text-align: left;
+	border: 0px solid black; 
 }
 
 #calendar {
@@ -162,21 +177,42 @@ table {
 tr, td {
 	border: 3px solid black;
 	color:white;
-	font-size: 30px;
+	font-size: 25px;
 	text-align: center;
-	width:108px;
+	width: 108px;
 }
 
 .banner {
 		background:var(--gradColor4);
 }
 
+
+#displayStatus {
+	position: absolute;
+	left: 45px;
+	top: 1425px;
+	width: 900px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px solid black; 
+	border-collapse:collapse;
+}
+
+#displayFrame {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	border: 0px solid black; 
+	display:block;
+}
+	
 #blank {
 	position: absolute;
 	left: 50px;
-	top: 1400px;
+	top: 1700px;
 	width: 800px;
 	color: #ffffff;
 	font-size: 30px; 
 	font-weight: normal;
 }
+

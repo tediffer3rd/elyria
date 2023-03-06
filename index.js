@@ -3,6 +3,7 @@
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
 var time = ["Noon", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm", "8 pm", "9 pm", "10 pm", "11 pm", "Midnight", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", "9 am", "10 am", "11 am", ]
+var time = ["Noon", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm", "8 pm", "9 pm", "10 pm", "11 pm", "Midnight", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", "9 am", "10 am", "11 am", ]
 var dayNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
 var weekdays = ["Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas", "Nehrdas", "Jahdas", "Gahldas", "Dehrdas", "Elimdas", "Iadas", "Zepdas", "Makdas"];
 var easyDays = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twnetieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth','thitieth', 'thirty-first', 'thirty-second'];
@@ -164,7 +165,7 @@ for (var i = 0; i < data.length; i ++) {
 			textJG.appendChild(textJ);
 
 			var textJBBox = textJ.getBBox();
-			textJ.setAttribute("transform", "rotate(" + -textRotate + " " + (textJBBox.x+(textJBBox.width/2)) + " " + (textJBBox.y+(textJBBox.height/2)) + ")");
+			textJ.setAttribute("transform", "rotate(" + (-textRotate) + " " + (textJBBox.x+(textJBBox.width/2)) + " " + (textJBBox.y+(textJBBox.height/2)) + ")");
 			textLineRotate += rotateAngle
 			textRotate += rotateAngle
 		}
@@ -178,6 +179,12 @@ if(localStorage.getItem('saveDate')) {
 	document.getElementById('inputDate').value=savedDate;
 }
 
+// check whether the 'status' data item is stored in web Storage
+if(localStorage.getItem('saveStatus')) {
+	var status = localStorage.getItem('saveStatus');
+	document.getElementById('displayStatus').value=status;
+}
+
 // set date to what is shown in the input window
 function setDate() {
 	var currentDate = document.getElementById('inputDate').value;
@@ -188,7 +195,9 @@ function setDate() {
 	var currentTime = localStorage.getItem('saveTime');
 	var tod = 0
 	if (currentTime == 1) {var tod = "Noon"} else if (currentTime < 13) {var tod = currentTime-1 + " pm"} else if (currentTime == 13) {var tod = "Midnight"} else if (currentTime > 12) {var tod = (currentTime-13) + " am"};
-	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ' the ' + easyDays[day-1] + ' day of ' + months[month-1] + ' <br> in the season of ' + seasons[season-1] + ". <br> The time of day is approximately " + tod;
+	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ', the ' + easyDays[day-1] + ' of ' + months[month-1] + ', in the season of ' + seasons[season-1];
+	document.getElementById('displayTime').innerHTML = 'The time of day is approximately ' + tod;
+//	document.getElementById('displayStatus').innerHTML = 'Current status: <br>' + status;
 	seasonsRotation = (360/4 * season)-((360/4));
 	monthsRotation = (360/16 * month)-((360/16));
 	daysRotation = (360/32 * day)-((360/32));
@@ -269,6 +278,12 @@ function clickData (clicked_id) {
 	localStorage.setItem('saveTime', time);
 	}
 location.reload();
+}
+
+function updateStatus() {
+	var status = document.getElementById('statusInput').value;
+	document.getElementById('displayStatus').value = status;
+	localStorage.setItem('saveStatus', status);
 }
 	
 // MOON

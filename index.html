@@ -4,32 +4,36 @@
 	<title>The Calendar of Elyria</title>
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 	<link rel="stylesheet" href="index.css">
 </head>
 <body>
 <div id="main">
-
-<form id="inputForm" onsubmit="setDate()">
-<input id="inputDate" type="int" value="0101" method="post" autofocus="">
-<input id="setDateButton" type="button" value="Set date" onclick="setDate()">
-<input id="addDayButton" type="button" value="Add day" onclick="addDay()">
-<input id="resetButton" type="button" value="Reset date" onclick="resetDate()">
-</form>
+	<form id="inputDateForm" onsubmit="setDate()">
+		<input id="inputDate" type="int" value="0101" method="post" autofocus="">
+		<input id="setDateButton" type="button" value="Set date" onclick="setDate()">
+		<input id="addDayButton" type="button" value="Add day" onclick="addDay()">
+		<input id="resetButton" type="button" value="Reset date" onclick="resetDate()">
+	</form>
 </div>
-<div id="displayDate">Enter the current date in the box above and press "ENTER" or click the "Set date" button
-</div>
+<div id="displayDate">Enter the current date in the box above and press "ENTER" or click the "Set date" button</div>
+<div id="displayTime">The time of day is</div>
+<!--div id="displayStatus">Our current status is:</div-->
+<!--div id="displayStatus"><p><iframe src="status" allowtransparency="true" width="500" height="200" ></iframe></p></div-->
 <script src="index.js"></script>
 </div>
 <div id="RecCal">
-<table>
-<tr class="banner"> <td>Nehrdas</td><td>Jahdas</td><td>Gahldas</td><td>Dehrdas</td><td>Elimdas</td><td>Iadas</td><td>Zepdas</td><td>Makdas</td></tr>
-<tr> <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
-<tr> <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
-<tr> <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
-<tr> <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td>32</td></tr>
-</table>
+	<table>
+		<tr class="banner"> <td>Nehrdas</td><td>Jahdas</td><td>Gahldas</td><td>Dehrdas</td><td>Elimdas</td><td>Iadas</td><td>Zepdas</td><td>Makdas</td></tr>
+		<tr> <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+		<tr> <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+		<tr> <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
+		<tr> <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td>32</td></tr>
+	</table>
 </div>
-<div id="blank">&nbsp</div>
+<div id="displayStatus"><iframe id="displayFrame" src="https://docs.google.com/document/d/e/2PACX-1vTwWdcrMs3J5wUggQRO39xlu3pPYsDgPDhQvurM1Wp0sf4XQpwNX7jJ_v8EsNDnUkq65bxic8j9CLuI/pub?embedded=true" width="1000" height="500"></iframe></div>
+<div id="blank"> &nbsp </div>
 </body>
 </html>
