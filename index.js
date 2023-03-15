@@ -195,7 +195,7 @@ function setDate() {
 	var currentTime = localStorage.getItem('saveTime');
 	var tod = 0
 	if (currentTime == 1) {var tod = "Noon"} else if (currentTime < 13) {var tod = currentTime-1 + " pm"} else if (currentTime == 13) {var tod = "Midnight"} else if (currentTime > 12) {var tod = (currentTime-13) + " am"};
-	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ', the ' + easyDays[day-1] + ' of ' + months[month-1] + ', in the season of ' + seasons[season-1];
+	document.getElementById('displayDate').innerHTML = 'Today is: ' + weekday + ', the ' + easyDays[day-1] + ' of ' + months[month-1] + ',<br> in the season of ' + seasons[season-1];
 	document.getElementById('displayTime').innerHTML = 'The time of day is approximately ' + tod;
 //	document.getElementById('displayStatus').innerHTML = 'Current status: <br>' + status;
 	seasonsRotation = (360/4 * season)-((360/4));
