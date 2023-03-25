@@ -19,6 +19,13 @@ body {
 
 #main {	}
 
+
+@media (max-width: 1750px) {
+  body {
+    flex-direction: column;
+  }
+}
+
 #inputDateForm {
 	position: absolute;
 	left: 50px;
