@@ -58,7 +58,7 @@ body {
 	stroke: #ffffff;
 	stroke-width: 1px;
 	fill: none;
-	animation-name: rotate;
+	animation-name: rotate; *
 	animation-duration: 2s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
