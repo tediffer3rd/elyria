@@ -76,7 +76,7 @@ body {
 	stroke-width: 1px;
 	fill: #bb2200;
 	animation-name: rotate; 
-	animation-duration: 1s; 
+	animation-duration: 2s; 
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
     transform-origin: 150px 500px;
