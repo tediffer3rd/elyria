@@ -11,11 +11,11 @@ var easyDays = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh
 var blankArray = []
 
 var data =  [
-	Array.from(sunDuration).map(String),
 	Array.from(time).map(String),
 	Array.from(dayNums).map(String),
 	Array.from(months).map(String),
 	Array.from(seasons).map(String),
+	Array.from(sunDuration).map(String),
 	]
 
 //set variables for calendar
