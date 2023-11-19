@@ -317,10 +317,15 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 	var currentDate = document.getElementById('inputDate').value;
 	var day = Number(currentDate.slice(-2));
 //if statements to set mask path
-	if (day <=08) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"} else
-	if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
-	if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
-	if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
+	if (day <=08) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"} else
+	if (day <=16) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
+	if (day <=24) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
+	if (day <=32) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"};
+
+//	if (day <=08) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"} else
+//	if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
+//	if (day <=24) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
+//	if (day <=32) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"};
 
 // set the arc of moonMask
 	if (day == 01 || day == 16 || day == 17 || day == 32) {var rad = " 100 100,"} else
