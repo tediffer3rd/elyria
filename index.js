@@ -320,7 +320,7 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 	if (day <=08) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 0,"} else
 	if (day <=16) {var sweep1 = " 0 0 0," ; var sweep2 = " 0 0 1,"} else
 	if (day <=24) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
-	if (day <=32) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"};
+	if (day <=32) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"};
 
 //	if (day <=08) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 1,"} else
 //	if (day <=16) {var sweep1 = " 0 0 1," ; var sweep2 = " 0 0 0,"} else
