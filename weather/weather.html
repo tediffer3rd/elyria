@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ted's Weather Dashboard</title>
+
+</head>
+
+<!-- pull these:
+    wind_speed
+    wind_direction
+    temperature
+    time
+    rain
+    pressure
+    indoor_temp
+    uvi
+    light
+-->
+    
+<body>
+    <div id="weatherData">
+        <svg id="svg-data" viewBox="0 0 2000 1000" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <rect x="0" y="0" width="2000" height="1000" rx="2.5" fill="gray" stroke="white" stroke-width="1" />
+            <g id="g1">
+                <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" fill="red" stroke="white"  stroke-width="5" />
+                <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" />
+                <text id="wind_word" text-anchor="middle" x="300" y="100" font-family="Verdana" font-size="100" fill="white">Wind</text>
+                <text id="wind_text" text-anchor="middle" x="300" y="330" font-family="Verdana" font-size="100" fill="white">wind</text>
+            </g>
+            <g id="g2">
+                <rect id="rect2" x="600" y="0" width="400" height="600" rx="2.5" fill="orange" stroke="white"  stroke-width="5" />
+                <text id="temp_word" text-anchor="middle" x="800" y="100" font-family="Verdana" font-size="100" fill="white">Temp</text>
+                <text id="temp_text" text-anchor="middle" x="800" y="350" font-family="Verdana" font-size="100" fill="white">temp</text>
+            </g>
+            <g id="g3">
+                <rect id="rect3" x="1000" y="0" width="1000" height="250" rx="2.5" fill="yellow" stroke="white"  stroke-width="5" />
+                <text id="time_word" text-anchor="middle" x="1500" y="100" font-family="Verdana" font-size="100" fill="white">Time</text>
+                <text id="time_text" text-anchor="middle" x="1500" y="200" font-family="Verdana" font-size="75" fill="white">time</text>
+            </g>
+            <g id="g4">
+                <rect id="rect4" x="1000" y="250" width="1000" height="100" rx="2.5" fill="green" stroke="white"  stroke-width="5" />
+                <text id="moon_word" text-anchor="middle" x="1400" y="360" font-family="Verdana" font-size="100" fill="white">Moon</text>
+                <text id="moon_text" text-anchor="middle" x="1400" y="310" font-family="Verdana" font-size="100" fill="white">moon</text>
+            </g>
+            <g id="g5">
+                <rect id="rect5" x="0" y="600" width="600" height="400" rx="2.5" fill="red" stroke="white"  stroke-width="5" />
+                <text id="rain_word" text-anchor="middle" x="300" y="700" font-family="Verdana" font-size="100" fill="white">Rain</text>
+                <text id="rain_text" text-anchor="middle" x="300" y="850" font-family="Verdana" font-size="100" fill="white">rain</text>
+            <g id="g8">
+                <rect id="rect8" x="600" y="600" width="400" height="400" rx="2.5" fill="orange" stroke="white"  stroke-width="5" />
+                <text id="indoor_word" text-anchor="middle"x="800" y="700" font-family="Verdana" font-size="100" fill="white">Indoor</text>
+                <text id="indoor_text" text-anchor="middle"x="800" y="850" font-family="Verdana" font-size="100" fill="white">indoor</text>
+            </g>            </g>
+            <g id="g6">
+                <rect id="rect6" x="1000" y="350" width="400" height="400" rx="2.5" fill="blue" stroke="white"  stroke-width="5" />
+                <text id="forecast_word" text-anchor="middle" x="1200" y="425" font-family="Verdana" font-size="75" fill="white">forecast</text>
+                <text id="forecast_text" text-anchor="middle" x="1200" y="600" font-family="Verdana" font-size="75" fill="white">forecast</text>
+            </g>                 
+            <g id="g7">
+                <rect id="rect7" x="1400" y="350" width="600" height="400" rx="2.5" fill="purple" stroke="white"  stroke-width="5" />
+                <text id="pressure_word" text-anchor="middle"x="1700" y="425" font-family="Verdana" font-size="75" fill="white">Pressure</text>
+                <text id="pressure_text" text-anchor="middle" x="1700" y="600" font-family="Verdana" font-size="75" fill="white">pressure</text>
+            </g>             
+            <g id="g9">
+                <rect id="rect9" x="1000" y="750" width="400" height="250" rx="2.5" fill="blue" stroke="white"  stroke-width="5" />
+                <text id="uvi_word" text-anchor="middle" x="1200" y="825" font-family="Verdana" font-size="75" fill="white">UV Index</text>
+                <text id="uvi_text" text-anchor="middle" x="1200" y="950" font-family="Verdana" font-size="75" fill="white">uvi</text>
+            </g>   
+            <g id="g10">
+                <rect id="rect10" x="1400" y="750" width="600" height="250" rx="2.5" fill="purple" stroke="white"  stroke-width="5" />
+                <text id="light_word" text-anchor="middle" x="1700" y="825" font-family="Verdana" font-size="75" fill="white">Light</text>
+                <text id="light_text" text-anchor="middle" x="1700" y="950" font-family="Verdana" font-size="75" fill="white">light</text>
+            </g>
+        </g>
+        </svg>
+    </div>
+<script type="text/javascript" >
+        // Replace these with your actual API Key and Application Key
+        const API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
+        const APPLICATION_KEY = 'fa627b2989d645cd9ec0bf5e15d4f38bc0253d60fad448f29f55b23b18cc8371';
+        const endpoint = 'https://api.ambientweather.net/v1/devices';
+
+// Ambient Weather API URL
+const url = `https://api.ambientweather.net/v1/devices?apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
+
+// Function to fetch weather data
+async function fetchWeatherData() {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.length === 0) {
+            console.error("No data available from the Ambient Weather API.");
+            return;
+        }
+
+        // Extract the required data
+        const weatherData = data[0]?.lastData; // Assuming first device's last data is what you need
+
+        const wind_speed = weatherData?.windspeedmph;       // Wind speed in mph
+        const wind_direction = weatherData?.winddir;       // Wind direction in degrees
+        const temperature = weatherData?.tempf;           // Temperature in Fahrenheit
+        const time = weatherData?.date;                // Time in UTC (milliseconds since epoch)
+        const rain = weatherData?.dailyrainin;            // Daily rain in inches
+        const pressure = weatherData?.baromrelin;         // Relative pressure in inHg
+        const indoor_temp = weatherData?.tempinf;         // Indoor temperature in Fahrenheit
+        const uvi = weatherData?.uv;                      // UV index
+        const light = weatherData?.solarradiation;        // Solar radiation in W/m²
+
+    const wind_text = document.getElementById("wind_text");
+    wind_text.innerHTML = wind_speed + " MPH";
+    const wind_dir =  document.getElementById("wind_dir");
+    wind_dir.setAttribute("transform", "rotate(" + wind_direction + ", 300, 300)");
+alert(wind_direction);
+    const temp_text = document.getElementById("temp_text");
+    temp_text.innerHTML = temperature + " °F"; 
+    const time_text = document.getElementById("time_text");
+    time_text.innerHTML = time; 
+    const rain_text = document.getElementById("rain_text");
+    rain_text.innerHTML = rain + '"'; 
+    const pressure_text = document.getElementById("pressure_text");
+    pressure_text.innerHTML = pressure + " inHg"; 
+    const indoor_text = document.getElementById("indoor_text");
+    indoor_text.innerHTML = indoor_temp + " °F"; 
+    const uvi_text = document.getElementById("uvi_text");
+    uvi_text.innerHTML = uvi; 
+    const light_text = document.getElementById("light_text");
+    light_text.innerHTML = light + " W/m²"; 
+        
+        // Log the values
+        console.log("Wind Speed:", wind_speed);
+        console.log("Wind Direction:", wind_direction);
+        console.log("Temperature:", temperature);
+        console.log("Time (UTC):", new Date(time).toISOString());
+        console.log("Rain (Daily):", rain);
+        console.log("Pressure:", pressure);
+        console.log("Indoor Temperature:", indoor_temp);
+        console.log("UV Index:", uvi);
+        console.log("Light (Solar Radiation):", light);
+
+        // Return the extracted data
+        return {
+            wind_speed,
+            wind_direction,
+            temperature,
+            time: new Date(time).toISOString(),
+            rain,
+            pressure,
+            indoor_temp,
+            uvi,
+            light,
+        };
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+   
+    }
+}
+
+
+    
+
+// Call the function
+fetchWeatherData();
+
+</script>
+</body>
