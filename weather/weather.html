@@ -23,54 +23,60 @@
     <div id="weatherData">
         <svg id="svg-data" viewBox="0 0 2000 1000" xmlns="http://www.w3.org/2000/svg">
         <g>
-            <rect x="0" y="0" width="2000" height="1000" rx="2.5" fill="gray" stroke="white" stroke-width="1" />
+            <rect x="0" y="0" width="2000" height="1000" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
             <g id="g1">
-                <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" fill="red" stroke="white"  stroke-width="5" />
-                <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" />
+                <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
+                <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
                 <text id="wind_word" text-anchor="middle" x="300" y="100" font-family="Verdana" font-size="100" fill="white">Wind</text>
-                <text id="wind_text" text-anchor="middle" x="300" y="330" font-family="Verdana" font-size="100" fill="white">wind</text>
+                <text id="wind_speed_text" text-anchor="middle" x="300" y="220" font-family="Verdana" font-size="100" fill="white">wind_speed_text</text>
+                <text id="wind_deg" text-anchor="middle" x="300" y="500" font-family="Verdana" font-size="100" fill="white">wind_deg</text>
+                <text id="wind_direction_text" text-anchor="middle" x="300" y="575" font-family="Verdana" font-size="50" fill="white">wind_direction_text</text>
             </g>
             <g id="g2">
-                <rect id="rect2" x="600" y="0" width="400" height="600" rx="2.5" fill="orange" stroke="white"  stroke-width="5" />
+                <rect id="rect2" x="600" y="0" width="400" height="600" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="temp_word" text-anchor="middle" x="800" y="100" font-family="Verdana" font-size="100" fill="white">Temp</text>
-                <text id="temp_text" text-anchor="middle" x="800" y="350" font-family="Verdana" font-size="100" fill="white">temp</text>
+                <text id="temp_text" text-anchor="middle" x="800" y="250" font-family="Verdana" font-size="100" fill="white">temp</text>
+                <text text-anchor="middle" x="800" y="400" font-family="Verdana" font-size="50" fill="white">feels like</text>
+                <text id="feels_like_text" text-anchor="middle" x="800" y="500" font-family="Verdana" font-size="100" fill="white">feels_like_text</text>
             </g>
             <g id="g3">
-                <rect id="rect3" x="1000" y="0" width="1000" height="250" rx="2.5" fill="yellow" stroke="white"  stroke-width="5" />
-                <text id="time_word" text-anchor="middle" x="1500" y="100" font-family="Verdana" font-size="100" fill="white">Time</text>
+                <rect id="rect3" x="1000" y="0" width="1000" height="250" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
+                <text id="date_text" text-anchor="middle" x="1500" y="100" font-family="Verdana" font-size="100" fill="white">Date</text>
                 <text id="time_text" text-anchor="middle" x="1500" y="200" font-family="Verdana" font-size="75" fill="white">time</text>
             </g>
             <g id="g4">
-                <rect id="rect4" x="1000" y="250" width="1000" height="100" rx="2.5" fill="green" stroke="white"  stroke-width="5" />
-                <text id="moon_word" text-anchor="middle" x="1400" y="360" font-family="Verdana" font-size="100" fill="white">Moon</text>
+                <rect id="rect4" x="1000" y="250" width="1000" height="100" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
+                <image href="moon_phases_sm.jpg" x="1000" y="250" width="1000" height="100" />
+<!--                <text id="moon_word" text-anchor="middle" x="1400" y="360" font-family="Verdana" font-size="100" fill="white">Moon</text>
                 <text id="moon_text" text-anchor="middle" x="1400" y="310" font-family="Verdana" font-size="100" fill="white">moon</text>
+-->
             </g>
             <g id="g5">
-                <rect id="rect5" x="0" y="600" width="600" height="400" rx="2.5" fill="red" stroke="white"  stroke-width="5" />
-                <text id="rain_word" text-anchor="middle" x="300" y="700" font-family="Verdana" font-size="100" fill="white">Rain</text>
+                <rect id="rect5" x="0" y="600" width="600" height="400" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
+                <text id="rain_word" text-anchor="middle" x="300" y="700" font-family="Verdana" font-size="100" fill="white">Rain today</text>
                 <text id="rain_text" text-anchor="middle" x="300" y="850" font-family="Verdana" font-size="100" fill="white">rain</text>
             <g id="g8">
-                <rect id="rect8" x="600" y="600" width="400" height="400" rx="2.5" fill="orange" stroke="white"  stroke-width="5" />
+                <rect id="rect8" x="600" y="600" width="400" height="400" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="indoor_word" text-anchor="middle"x="800" y="700" font-family="Verdana" font-size="100" fill="white">Indoor</text>
                 <text id="indoor_text" text-anchor="middle"x="800" y="850" font-family="Verdana" font-size="100" fill="white">indoor</text>
             </g>            </g>
             <g id="g6">
-                <rect id="rect6" x="1000" y="350" width="400" height="400" rx="2.5" fill="blue" stroke="white"  stroke-width="5" />
+                <rect id="rect6" x="1000" y="350" width="400" height="400" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="forecast_word" text-anchor="middle" x="1200" y="425" font-family="Verdana" font-size="75" fill="white">forecast</text>
                 <text id="forecast_text" text-anchor="middle" x="1200" y="600" font-family="Verdana" font-size="75" fill="white">forecast</text>
             </g>                 
             <g id="g7">
-                <rect id="rect7" x="1400" y="350" width="600" height="400" rx="2.5" fill="purple" stroke="white"  stroke-width="5" />
+                <rect id="rect7" x="1400" y="350" width="600" height="400" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="pressure_word" text-anchor="middle"x="1700" y="425" font-family="Verdana" font-size="75" fill="white">Pressure</text>
                 <text id="pressure_text" text-anchor="middle" x="1700" y="600" font-family="Verdana" font-size="75" fill="white">pressure</text>
             </g>             
             <g id="g9">
-                <rect id="rect9" x="1000" y="750" width="400" height="250" rx="2.5" fill="blue" stroke="white"  stroke-width="5" />
+                <rect id="rect9" x="1000" y="750" width="400" height="250" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="uvi_word" text-anchor="middle" x="1200" y="825" font-family="Verdana" font-size="75" fill="white">UV Index</text>
                 <text id="uvi_text" text-anchor="middle" x="1200" y="950" font-family="Verdana" font-size="75" fill="white">uvi</text>
             </g>   
             <g id="g10">
-                <rect id="rect10" x="1400" y="750" width="600" height="250" rx="2.5" fill="purple" stroke="white"  stroke-width="5" />
+                <rect id="rect10" x="1400" y="750" width="600" height="250" rx="2.5" fill="black" stroke="gray"  stroke-width="5" />
                 <text id="light_word" text-anchor="middle" x="1700" y="825" font-family="Verdana" font-size="75" fill="white">Light</text>
                 <text id="light_text" text-anchor="middle" x="1700" y="950" font-family="Verdana" font-size="75" fill="white">light</text>
             </g>
@@ -107,6 +113,7 @@ async function fetchWeatherData() {
         const wind_speed = weatherData?.windspeedmph;       // Wind speed in mph
         const wind_direction = weatherData?.winddir;       // Wind direction in degrees
         const temperature = weatherData?.tempf;           // Temperature in Fahrenheit
+        const feels_like = weatherData?.feelsLike;           // Temperature in Fahrenheit
         const time = weatherData?.date;                // Time in UTC (milliseconds since epoch)
         const rain = weatherData?.dailyrainin;            // Daily rain in inches
         const pressure = weatherData?.baromrelin;         // Relative pressure in inHg
@@ -114,15 +121,63 @@ async function fetchWeatherData() {
         const uvi = weatherData?.uv;                      // UV index
         const light = weatherData?.solarradiation;        // Solar radiation in W/m²
 
-    const wind_text = document.getElementById("wind_text");
-    wind_text.innerHTML = wind_speed + " MPH";
+/// WIND
+    const wind_speed_text = document.getElementById("wind_speed_text");
+    wind_speed_text.innerHTML = Math.floor(wind_speed) + " MPH";
+
+function getWindDirection(degrees) {
+    if (typeof degrees !== "number" || degrees < 0 || degrees > 360) {
+        return "Invalid input. Degrees must be a number between 0 and 360.";
+    }
+
+    const directions = [
+        "North", "North-Northeast", "Northeast", "East-Northeast",
+        "East", "East-Southeast", "Southeast", "South-Southeast",
+        "South", "South-Southwest", "Southwest", "West-Southwest",
+        "West", "West-Northwest", "Northwest", "North-Northwest", "North"
+    ];
+
+    // Divide the circle into 16 equal parts (22.5° each)
+    const index = Math.round(degrees / 22.5);
+    return directions[index];
+}
+
+// Example usage:
+const degrees = wind_direction; // Change this value as needed
+const direction = getWindDirection(degrees);
+                
+    const wind_deg = document.getElementById("wind_deg");
+    wind_deg.innerHTML = degrees + "° ";
+        
     const wind_dir =  document.getElementById("wind_dir");
     wind_dir.setAttribute("transform", "rotate(" + wind_direction + ", 300, 300)");
-alert(wind_direction);
+
+    const wind_direction_text = document.getElementById("wind_direction_text");
+    wind_direction_text.innerHTML = direction ;
+
+//TEMP        
     const temp_text = document.getElementById("temp_text");
-    temp_text.innerHTML = temperature + " °F"; 
-    const time_text = document.getElementById("time_text");
-    time_text.innerHTML = time; 
+    temp_text.innerHTML = Math.floor(temperature) + " °F"; 
+    const feels_like_text = document.getElementById("feels_like_text");
+    feels_like_text.innerHTML = Math.floor(feels_like) + "°F"; 
+feels_like_text
+        const time_text = document.getElementById("time_text");
+        const date_text = document.getElementById("date_text");
+const date = new Date();
+const formattedDate = date.toLocaleString('en-US', {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+const formattedTime = date.toLocaleString('en-US', {
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true
+});
+        date_text.innerHTML = formattedDate; 
+        time_text.innerHTML = formattedTime; 
+
     const rain_text = document.getElementById("rain_text");
     rain_text.innerHTML = rain + '"'; 
     const pressure_text = document.getElementById("pressure_text");
