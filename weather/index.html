@@ -94,12 +94,12 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             <g id="Wind">
                 <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" />
                 <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
-                <text id="wind_word" text-anchor="middle" x="300" y="100" font-size="100" >Wind</text>
+                <text id="wind_word" text-anchor="middle" x="300" y="75" font-size="75" >Wind</text>
                 <text id="wind_speed_text" text-anchor="middle" x="300" y="333" font-size="100">wind_speed_text</text>
                 <text id="wind_deg" text-anchor="middle" x="300" y="500" font-size="50">wind_deg</text>
                 <text id="wind_direction_text" text-anchor="middle" x="300" y="550" font-size="50">wind_direction_text</text>
-                <text id="maxdailygust_word" text-anchor="start" x="10" y="580" font-size="25">maxdailygust</text>
-                <text id="maxdailygust_text" text-anchor="end" x="590" y="580" font-size="25">maxdailygust_text</text>
+                <text id="maxdailygust_word" text-anchor="start" x="10" y="585" font-size="25">maxdailygust</text>
+                <text id="maxdailygust_text" text-anchor="end" x="590" y="585" font-size="25">maxdailygust_text</text>
             </g>
             <g id="outdoors">
                 <rect id="rect2" x="600" y="0" width="400" height="600" />
@@ -113,8 +113,8 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             </g>
             <g id="date-time">
                 <rect id="rect3" x="1000" y="0" width="1000" height="250" />
-                <text id="date_text" text-anchor="middle" x="1500" y="100" font-size="100">Date</text>
-                <text id="time_text" text-anchor="middle" x="1500" y="200" font-size="75">time</text>
+                <text id="date_text" text-anchor="middle" x="1500" y="75" font-size="75">Date</text>
+                <text id="time_text" text-anchor="middle" x="1500" y="175" font-size="75">time</text>
             </g>
             <g id="moon_phase">
                 <rect id="rect4" x="1000" y="250" width="1000" height="100" />
@@ -123,8 +123,8 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             <g id="rain">
                 <rect id="rect5" x="0" y="600" width="600" height="400" />
                 <text id="rain_word" text-anchor="middle" x="300" y="675" font-size="75">Rain:</text>
-                <text id="dailyrainin_word" text-anchor="start" x="10" y="735" font-size="75">Today</text>
-                <text id="dailyrainin_text" text-anchor="end" x="590" y="735" font-size="75">dailyrainin_text</text>
+                <text id="dailyrainin_word" text-anchor="start" x="10" y="735" font-size="50">Today</text>
+                <text id="dailyrainin_text" text-anchor="end" x="590" y="735" font-size="50">dailyrainin_text</text>
                 <text id="eventrainin_word" text-anchor="start" x="10" y="795" font-size="50">This event</text>
                 <text id="eventrainin_text" text-anchor="end" x="590" y="795" font-size="50">eventrainin_text</text>
                 <text id="weeklyrainin_word" text-anchor="start" x="10" y="855" font-size="50">This week</text>
@@ -156,8 +156,8 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <rect id="rect7" x="1400" y="350" width="600" height="400" />
                 <text id="pressure_word" text-anchor="middle"x="1700" y="425" font-size="75">Pressure</text>
                 <text id="pressure_text" text-anchor="middle" x="1700" y="525" font-size="75">pressure</text>
-                <text id="pressure_scale_text" text-anchor="middle" x="1700" y="625" font-size="75">pressure_scale_text</text>
-                <text id="pressure_feel_text" text-anchor="middle" x="1700" y="725" font-size="75">pressure_feel_text</text>
+                <text id="pressure_scale_text" text-anchor="middle" x="1700" y="675" font-size="50">pressure_scale_text</text>
+                <text id="pressure_feel_text" text-anchor="middle" x="1700" y="725" font-size="50">pressure_feel_text</text>
             </g>             
             <g id="uv">
                 <rect id="rect9" x="1000" y="750" width="400" height="250" />
@@ -180,16 +180,20 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
         </svg>
 </div>
     <div id="video_div">
-			<video id="antelope_vid" width="640" controls autoplay muted >
+			<video id="antelope_vid" width="640" height="320" controls autoplay muted >
 				<source src="https://images.ambientweather.net/videos/latest/98CDAC220433.mp4" type="video/mp4">
 			</video>
-			<video id="idledale_vid" width="640" controls autoplay muted >
+			<video id="idledale_vid" width="640" height="320" controls autoplay muted >
 				<source src="https://images.ambientweather.net/videos/latest/3494548CAAD7.mp4" type="video/mp4">
 			</video>			
 	</div>
 
 	<script type="text/javascript" >
-document.querySelector('video').playbackRate = .64;
+//document.querySelector('video').playbackRate = .64;
+let antelope_vid = document.getElementById("antelope_vid");
+antelope_vid.playbackRate = 0.16;
+let idledale_vid = document.getElementById("idledale_vid");
+idledale_vid.playbackRate = 0.25;
 
         // Replace these with your actual API Key and Application Key
         const API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
@@ -238,10 +242,6 @@ async function fetchWeatherData() {
         const light = weatherData?.solarradiation;			// Solar radiation in W/m²
         const battout = weatherData?.battout;				// Outdoor Battery
 
-//BATTERY
-	const battery_circle = document.getElementById("battery_circle");
-	if (battout == 1) {battery_circle.setAttribute("fill", "green");} else {battery_circle.setAttribute("fill", "red");} 
-
 /// WIND
     const wind_speed_text = document.getElementById("wind_speed_text");
     wind_speed_text.innerHTML = Math.round(wind_speed) + " MPH";
@@ -278,7 +278,6 @@ const direction = getWindDirection(degrees);
     const maxdailygust_text = document.getElementById("maxdailygust_text");
     maxdailygust_text.innerHTML = Math.round(maxdailygust) + " MPH";
 
-//TEMP        
 //OUTDOORS
     const temp_text = document.getElementById("temp_text");
     temp_text.innerHTML = Math.round(temperature) + " °F"; 
@@ -286,14 +285,6 @@ const direction = getWindDirection(degrees);
     humidity_text.innerHTML = Math.round(humidity) + "%"; 
     const feels_like_text = document.getElementById("feels_like_text");
     feels_like_text.innerHTML = Math.round(feels_like) + "°F"; 
-
-//INDOORS
-    const tempinf_indoor_text = document.getElementById("tempinf_indoor_text");
-    tempinf_indoor_text.innerHTML = Math.round(tempinf) + " °F"; 
-    const humidityin_text = document.getElementById("humidityin_text");
-    humidityin_text.innerHTML = Math.round(humidityin) + "%"; 
-    const feelsLikein_text = document.getElementById("feelsLikein_text");
-    feelsLikein_text.innerHTML = Math.round(feelsLikein) + "°F"; 
 
 // Date
     const time_text = document.getElementById("time_text");
@@ -324,6 +315,14 @@ const formattedTime = date.toLocaleString('en-US', {
     monthlyrainin_text.innerHTML = Math.round(monthlyrainin* 10) / 10 + '"'; 
     const yearlyrainin_text = document.getElementById("yearlyrainin_text");
     yearlyrainin_text.innerHTML = Math.round(yearlyrainin* 10) / 10 + '"'; 
+
+//INDOORS
+    const tempinf_indoor_text = document.getElementById("tempinf_indoor_text");
+    tempinf_indoor_text.innerHTML = Math.round(tempinf) + " °F"; 
+    const humidityin_text = document.getElementById("humidityin_text");
+    humidityin_text.innerHTML = Math.round(humidityin) + "%"; 
+    const feelsLikein_text = document.getElementById("feelsLikein_text");
+    feelsLikein_text.innerHTML = Math.round(feelsLikein) + "°F"; 
 
 //PRESSURE
     const pressure_text = document.getElementById("pressure_text");
@@ -361,9 +360,14 @@ const formattedTime = date.toLocaleString('en-US', {
 	} else uvi_risk = "Extreme";
 	    const uvi_risk_text = document.getElementById("uvi_risk_text");
     uvi_risk_text.innerHTML = uvi_risk; 
+
 //LIGHT
     const light_text = document.getElementById("light_text");
     light_text.innerHTML = Math.round(light) + " W/m²"; 
+
+//BATTERY
+	const battery_circle = document.getElementById("battery_circle");
+	if (battout == 2) {battery_circle.setAttribute("fill", "#00ff00");} else {battery_circle.setAttribute("fill", "#ff0000");} 
 
     } catch (error) {
         console.error("Error fetching weather data:", error);
