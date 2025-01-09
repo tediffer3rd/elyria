@@ -26,8 +26,26 @@ stroke-linecap: round;
 stroke-linejoin: round;
 }
 text {
+font-size: 50px;
 font-family:Verdana;
 fill:#dfdfdf;
+}
+.small {
+font-size: 35px;
+}
+.medium {
+font-size: 50px;
+}
+.large {
+font-size: 75px;
+}
+.video_div {
+max-width: 100%; /* Set a pixel value instead if no parent container*/
+margin: 0 auto; /* Center the container */
+}
+.video_div video {
+    	width: 100%; /* Fill the available width */
+    	height: auto; /* Adjust height automatically */
 }
 
 </style>
@@ -94,55 +112,56 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             <g id="Wind">
                 <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" />
                 <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
-                <text id="wind_word" text-anchor="middle" x="300" y="75" font-size="75" >Wind</text>
-                <text id="wind_speed_text" text-anchor="middle" x="300" y="333" font-size="100">wind_speed_text</text>
-                <text id="wind_deg" text-anchor="middle" x="300" y="500" font-size="50">wind_deg</text>
-                <text id="wind_direction_text" text-anchor="middle" x="300" y="550" font-size="50">wind_direction_text</text>
-                <text id="maxdailygust_word" text-anchor="start" x="10" y="585" font-size="25">maxdailygust</text>
-                <text id="maxdailygust_text" text-anchor="end" x="590" y="585" font-size="25">maxdailygust_text</text>
+                <text id="wind_word" class="large" text-anchor="middle" x="300" y="75" >Wind</text>
+                <text id="wind_speed_text" text-anchor="middle" x="300" y="333" >wind_speed_text</text>
+                <text id="wind_deg" text-anchor="middle" x="300" y="495" >wind_deg</text>
+                <text id="wind_direction_text" text-anchor="middle" x="300" y="540" >wind_direction_text</text>
+                <text id="maxdailygust_word" text-anchor="start" x="10" y="585" >maxdailygust</text>
+                <text id="maxdailygust_text" text-anchor="end" x="590" y="585" >maxdailygust_text</text>
             </g>
             <g id="outdoors">
                 <rect id="rect2" x="600" y="0" width="400" height="600" />
-                <text id="outdoors_word" text-anchor="middle" x="800" y="75" font-size="75">Outdoors:</text>
-                <text id="temp_word" text-anchor="middle" x="800" y="150" font-size="50">Temp</text>
-                <text id="temp_text" text-anchor="middle" x="800" y="225" font-size="75">temp</text>
-                <text id="humidity_word" text-anchor="middle" x="800" y="300" font-size="50">Humidity</text>
-                <text id="humidity_text" text-anchor="middle" x="800" y="375" font-size="75">outdoor_humidity_text</text>
-                <text id="feels_like_word" text-anchor="middle" x="800" y="450" font-size="50">Feels like</text>
-                <text id="feels_like_text" text-anchor="middle" x="800" y="550" font-size="75">feels_like_text</text>
+                <text id="outdoors_word" class="large" text-anchor="middle" x="800" y="75" >Outdoors:</text>
+                <text id="temp_word" text-anchor="middle" x="800" y="150" >Temp</text>
+                <text id="temp_text" text-anchor="middle" x="800" y="200" >temp</text>
+                <text id="humidity_word" text-anchor="middle" x="800" y="350" >Humidity</text>
+                <text id="humidity_text" text-anchor="middle" x="800" y="400" >outdoor_humidity_text</text>
+                <text id="feels_like_word" text-anchor="middle" x="800" y="525" >Feels like</text>
+                <text id="feels_like_text" text-anchor="middle" x="800" y="575" >feels_like_text</text>
             </g>
             <g id="date-time">
                 <rect id="rect3" x="1000" y="0" width="1000" height="250" />
-                <text id="date_text" text-anchor="middle" x="1500" y="75" font-size="75">Date</text>
-                <text id="time_text" text-anchor="middle" x="1500" y="175" font-size="75">time</text>
+                <text id="date_text" class="large" text-anchor="middle" x="1500" y="75" >Date</text>
+                <text id="time_text" text-anchor="middle" x="1500" y="175" >time</text>
             </g>
             <g id="moon_phase">
                 <rect id="rect4" x="1000" y="250" width="1000" height="100" />
-                <text id="moon_phase_text" text-anchor="middle" x="1500" y="325" font-size="75">Moon phase</text>
+                <text id="moon_phase_text" text-anchor="middle" x="1500" y="325" >Moon phase</text>
 			</g>
             <g id="rain">
                 <rect id="rect5" x="0" y="600" width="600" height="400" />
-                <text id="rain_word" text-anchor="middle" x="300" y="675" font-size="75">Rain:</text>
-                <text id="dailyrainin_word" text-anchor="start" x="10" y="735" font-size="50">Today</text>
-                <text id="dailyrainin_text" text-anchor="end" x="590" y="735" font-size="50">dailyrainin_text</text>
-                <text id="eventrainin_word" text-anchor="start" x="10" y="795" font-size="50">This event</text>
-                <text id="eventrainin_text" text-anchor="end" x="590" y="795" font-size="50">eventrainin_text</text>
-                <text id="weeklyrainin_word" text-anchor="start" x="10" y="855" font-size="50">This week</text>
-                <text id="weeklyrainin_text" text-anchor="end" x="590" y="855" font-size="50">weeklyrainin_text</text>
-                <text id="monthlyrainin_word" text-anchor="start" x="10" y="915" font-size="50">This month</text>
-                <text id="monthlyrainin_text" text-anchor="end" x="590" y="915" font-size="50">monthlyrainin_text</text>
-                <text id="yearlyrainin_word" text-anchor="start" x="10" y="975" font-size="50">This year</text>
-                <text id="yearlyrainin_text" text-anchor="end" x="590" y="975" font-size="50">yearlyrainin_text</text>
+                <text id="rain_word" class="large" text-anchor="middle" x="300" y="675" >Rain:</text>
+                <text id="dailyrainin_word" text-anchor="start" x="10" y="735" >Today</text>
+                <text id="dailyrainin_text" text-anchor="end" x="590" y="735" >dailyrainin_text</text>
+                <text id="eventrainin_word" text-anchor="start" x="10" y="795" >This event</text>
+                <text id="eventrainin_text" text-anchor="end" x="590" y="795" >eventrainin_text</text>
+                <text id="weeklyrainin_word" text-anchor="start" x="10" y="855" >This week</text>
+                <text id="weeklyrainin_text" text-anchor="end" x="590" y="855" >weeklyrainin_text</text>
+                <text id="monthlyrainin_word" text-anchor="start" x="10" y="915" >This month</text>
+                <text id="monthlyrainin_text" text-anchor="end" x="590" y="915" >monthlyrainin_text</text>
+                <text id="yearlyrainin_word" text-anchor="start" x="10" y="975" >This year</text>
+                <text id="yearlyrainin_text" text-anchor="end" x="590" y="975" >yearlyrainin_text</text>
 			</g>
             <g id="indoors">
                 <rect id="rect8" x="600" y="600" width="400" height="400" />
-                <text id="indoor_word" text-anchor="middle"x="800" y="675" font-size="75">Indoors:</text>
-                <text id="tempinf_indoor_word" text-anchor="start" x="610" y="750" font-size="50">Temp</text>
-                <text id="tempinf_indoor_text" text-anchor="end" x="990" y="750" font-size="50">indoor temp</text>
-                <text id="humidityin_word" text-anchor="start" x="610" y="850" font-size="50">Humidity</text>
-                <text id="humidityin_text" text-anchor="end" x="990" y="850" font-size="50">humidityin_text</text>
-                <text id="feelsLikein_word" text-anchor="start" x="610" y="950" font-size="50">Feels like</text>
-                <text id="feelsLikein_text" text-anchor="end" x="990" y="950" font-size="50">feelsLikein_text</text>
+                <text id="indoor_word" class="large" text-anchor="middle" x="800" y="675" >Indoors:</text>
+                <text id="tempinf_indoor_word" text-anchor="middle" x="800" y="750" >Temp</text>
+                <text id="tempinf_indoor_text" text-anchor="middle" x="800" y="800" >indoor temp</text>
+<!--                <text id="humidityin_word" class="small" text-anchor="end" x="800" y="850" >Humidity:</text>
+-->
+                <text id="humidityin_text" class="small" text-anchor="middle" x="800" y="860" >humidityin_text</text>
+                <text id="feelsLikein_word" text-anchor="middle" x="800" y="925" >Feels like</text>
+                <text id="feelsLikein_text" text-anchor="middle" x="800" y="975" >feelsLikein_text</text>
             </g>
             <g id="moon_image">
                 <rect id="rect6" x="1000" y="350" width="400" height="400" />
@@ -154,50 +173,50 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             </g>   
             <g id="pressure">
                 <rect id="rect7" x="1400" y="350" width="600" height="400" />
-                <text id="pressure_word" text-anchor="middle"x="1700" y="425" font-size="75">Pressure</text>
-                <text id="pressure_text" text-anchor="middle" x="1700" y="525" font-size="75">pressure</text>
-                <text id="pressure_scale_text" text-anchor="middle" x="1700" y="675" font-size="50">pressure_scale_text</text>
-                <text id="pressure_feel_text" text-anchor="middle" x="1700" y="725" font-size="50">pressure_feel_text</text>
+                <text id="pressure_word" class="large" text-anchor="middle"x="1700" y="425" >Pressure</text>
+                <text id="pressure_text" text-anchor="middle" x="1700" y="525" >pressure</text>
+                <text id="pressure_scale_text" text-anchor="middle" x="1700" y="675" >pressure_scale_text</text>
+                <text id="pressure_feel_text" text-anchor="middle" x="1700" y="725" >pressure_feel_text</text>
             </g>             
             <g id="uv">
                 <rect id="rect9" x="1000" y="750" width="400" height="250" />
-                <text id="uvi_word" text-anchor="middle" x="1200" y="825" font-size="75">UV Index</text>
-                <text id="uvi_text" text-anchor="middle" x="1050" y="937" font-size="75">uvi</text>
-                <text id="uvi_risk_word" text-anchor="end" x="1380" y="900" font-size="50">risk</text>
-                <text id="uvi_risk_text" text-anchor="end" x="1380" y="975" font-size="50">uvi_risk_text</text>
+                <text id="uvi_word" class="large" text-anchor="middle" x="1200" y="825" >UV Index</text>
+                <text id="uvi_text" text-anchor="middle" x="1050" y="937" >uvi</text>
+                <text id="uvi_risk_word" text-anchor="end" x="1380" y="900" >risk</text>
+                <text id="uvi_risk_text" text-anchor="end" x="1380" y="975" >uvi_risk_text</text>
             </g>   
             <g id="light">
                 <rect id="rect10" x="1400" y="750" width="600" height="250" />
-                <text id="light_word" text-anchor="middle" x="1700" y="825" font-size="75">Light</text>
-                <text id="light_text" text-anchor="middle" x="1700" y="950" font-size="75">light</text>
+                <text id="light_word" class="large" text-anchor="middle" x="1700" y="825" >Light</text>
+                <text id="light_text" text-anchor="middle" x="1700" y="950" >light</text>
             </g>
             <g id="battery">
                 <rect id="rect11" x="1900" y="900" width="100" height="100" />
-                <text id="battery_word" text-anchor="end" x="1995" y="925" font-size="25">Battery</text>
+                <text id="battery_word" class="small" text-anchor="end" x="1995" y="925" >Batt</text>
                 <circle id="battery_circle" cx="1950" cy="963" r="25" />
             </g>
         </g>
         </svg>
 </div>
-    <div id="video_div">
-				<h1>From Briagate looking west towards Pike's Peak</h1>
-			<video id="antelope_vid" width="960" height="480" controls autoplay muted >
+    <div id="video_div" class="video_div">
+				<h2>From Briagate looking west, Pike's Peak right in the middle</h2>
+			<video id="antelope_vid" class="video_div video" controls autoplay muted >
 				<source src="https://images.ambientweather.net/videos/latest/98CDAC220433.mp4" type="video/mp4">
 			</video><br>
-				<h1>From Pueblo West looking north towards Pike's Peak</h1>
-			<video id="idledale_vid" width="960" height="480" controls autoplay muted >
+				<h2>From Pueblo West looking north-west, Pike's Peak at far right</h2>
+			<video id="idledale_vid" class="video_div video" controls autoplay muted >
 				<source src="https://images.ambientweather.net/videos/latest/3494548CAAD7.mp4" type="video/mp4">
 			</video>	
 				<h1>Fields of vision from Briagate and Pueblo West</h1>
-			<img src="fov.png" width="750" height="780" />
+			<img src="fov.png" width="562.5" height="585" />
 	</div>
 
 	<script type="text/javascript" >
 //document.querySelector('video').playbackRate = .64;
 const antelope_vid = document.getElementById("antelope_vid");
-antelope_vid.playbackRate = 0.08;
+antelope_vid.playbackRate = 0.3;
 const idledale_vid = document.getElementById("idledale_vid");
-idledale_vid.playbackRate = 0.125;
+idledale_vid.playbackRate = 0.46;
 
         // Replace these with your actual API Key and Application Key
         const API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
@@ -229,6 +248,7 @@ async function fetchWeatherData() {
         const wind_direction = weatherData?.winddir;		// Wind direction in degrees
         const maxdailygust = weatherData?.maxdailygust;		// max daily gust
         const temperature = weatherData?.tempf;				// Temperature in Fahrenheit
+        const temperatureC = weatherData?.tempc;				// Temperature in Fahrenheit
         const humidity = weatherData?.humidity;				// Temperature in Fahrenheit
         const feels_like = weatherData?.feelsLike;			// Temperature in Fahrenheit
         const tempinf = weatherData?.tempinf;				// Temperature in Fahrenheit
@@ -284,11 +304,11 @@ const direction = getWindDirection(degrees);
 
 //OUTDOORS
     const temp_text = document.getElementById("temp_text");
-    temp_text.innerHTML = Math.round(temperature) + " °F"; 
+    temp_text.innerHTML = Math.round(temperature) + " °F &nbsp / &nbsp " + Math.round((temperature-32)/1.8) + "C"; 
     const humidity_text = document.getElementById("humidity_text");
     humidity_text.innerHTML = Math.round(humidity) + "%"; 
     const feels_like_text = document.getElementById("feels_like_text");
-    feels_like_text.innerHTML = Math.round(feels_like) + "°F"; 
+    feels_like_text.innerHTML = Math.round(feels_like) + "°F &nbsp / &nbsp " + Math.round((feels_like-32)/1.8) + "C"; ; 
 
 // Date
     const time_text = document.getElementById("time_text");
@@ -322,11 +342,11 @@ const formattedTime = date.toLocaleString('en-US', {
 
 //INDOORS
     const tempinf_indoor_text = document.getElementById("tempinf_indoor_text");
-    tempinf_indoor_text.innerHTML = Math.round(tempinf) + " °F"; 
+    tempinf_indoor_text.innerHTML = Math.round(tempinf) + " °F &nbsp / &nbsp " + Math.round((tempinf-32)/1.8) + "C"; ; 
     const humidityin_text = document.getElementById("humidityin_text");
-    humidityin_text.innerHTML = Math.round(humidityin) + "%"; 
+    humidityin_text.innerHTML = "Humidity: " + Math.round(humidityin) + "%"; 
     const feelsLikein_text = document.getElementById("feelsLikein_text");
-    feelsLikein_text.innerHTML = Math.round(feelsLikein) + "°F"; 
+    feelsLikein_text.innerHTML = Math.round(feelsLikein) + "°F &nbsp / &nbsp " + Math.round((feelsLikein-32)/1.8) + "C"; ; 
 
 //PRESSURE
     const pressure_text = document.getElementById("pressure_text");
