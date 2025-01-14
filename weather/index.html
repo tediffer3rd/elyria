@@ -6,47 +6,49 @@
     <title>Ted's Weather Dashboard</title>
 
 <style>
-rect {
-fill: #222222;
-stroke: #000000;
-stroke-width: 5px;
-rx: 5px;
-}
-path {
-fill: #333333;
-stroke: yellow;
-stroke-width: 5px;
-stroke-linecap: round;
-stroke-linejoin: round;
-}
-circle {
-stroke: #000000;
-stroke-width: 5px;
-stroke-linecap: round;
-stroke-linejoin: round;
-}
-text {
-font-size: 50px;
-font-family:Verdana;
-fill:#dfdfdf;
-}
-.small {
-font-size: 35px;
-}
-.medium {
-font-size: 50px;
-}
-.large {
-font-size: 75px;
-}
-.video_div {
-max-width: 100%; 
-}
-.video_div video {
-    	width: 720px; 
-    	height: auto; 
-}
-
+    .rect0{
+    fill: #000000;
+    }
+    .rect1 {
+    fill: #333333;
+    stroke: #000000;
+    stroke-width: 10px;
+    rx: 50px;
+    }
+    path {
+    fill: #333333;
+    stroke: yellow;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    }
+    circle {
+    stroke: #000000;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    }
+    text {
+    font-size: 50px;
+    font-family:Verdana;
+    fill:#dfdfdf;
+    }
+    .small {
+    font-size: 35px;
+    }
+    .medium {
+    font-size: 50px;
+    }
+    .large {
+    font-size: 75px;
+    }
+    .video_div {
+    max-width: 100%; 
+    }
+    .video_div video {
+	width: 720px; 
+    height: auto; 
+    }
 </style>
 </head>
 
@@ -103,13 +105,12 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
 -->
     
 <body>
-
     <div id="weatherData">
         <svg id="svg-data" viewBox="0 0 2000 1000" xmlns="http://www.w3.org/2000/svg">
         <g id="All">
-            <rect x="0" y="0" width="2000" height="1000" />
+            <rect class="rect0" x="0" y="0" width="2000" height="1000" />
             <g id="Wind">
-                <rect id="rect1" x="0" y="0" width="600" height="600" rx="2.5" />
+                <rect class="rect1" x="0" y="0" width="600" height="600" rx="2.5" />
                 <polyline id="wind_dir" points="300 50, 300 550, 200 400, 400 400, 300 550, 300 50" stroke="blue" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
                 <text id="wind_word" class="large" text-anchor="middle" x="300" y="75" >Wind</text>
                 <text id="wind_speed_text" text-anchor="middle" x="300" y="333" >wind_speed_text</text>
@@ -119,7 +120,7 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <text id="maxdailygust_text" text-anchor="end" x="590" y="585" >maxdailygust_text</text>
             </g>
             <g id="outdoors">
-                <rect id="rect2" x="600" y="0" width="400" height="600" />
+                <rect class="rect1" id="rect2" x="600" y="0" width="400" height="600" />
                 <text id="outdoors_word" class="large" text-anchor="middle" x="800" y="75" >Outdoors:</text>
                 <text id="temp_word" text-anchor="middle" x="800" y="150" >Temp</text>
                 <text id="temp_text" text-anchor="middle" x="800" y="200" >temp</text>
@@ -129,16 +130,16 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <text id="feels_like_text" text-anchor="middle" x="800" y="575" >feels_like_text</text>
             </g>
             <g id="date-time">
-                <rect id="rect3" x="1000" y="0" width="1000" height="250" />
+                <rect class="rect1"  id="rect3" x="1000" y="0" width="1000" height="250" />
                 <text id="date_text" class="large" text-anchor="middle" x="1500" y="75" >Date</text>
                 <text id="time_text" text-anchor="middle" x="1500" y="175" >time</text>
             </g>
             <g id="moon_phase">
-                <rect id="rect4" x="1000" y="250" width="1000" height="100" />
+                <rect class="rect1"  id="rect4" x="1000" y="250" width="1000" height="100" />
                 <text id="moon_phase_text" text-anchor="middle" x="1500" y="325" >Moon phase</text>
 			</g>
             <g id="rain">
-                <rect id="rect5" x="0" y="600" width="600" height="400" />
+                <rect class="rect1"  id="rect5" x="0" y="600" width="600" height="400" />
                 <text id="rain_word" class="large" text-anchor="middle" x="300" y="675" >Rain:</text>
                 <text id="dailyrainin_word" text-anchor="start" x="10" y="735" >Today</text>
                 <text id="dailyrainin_text" text-anchor="end" x="590" y="735" >dailyrainin_text</text>
@@ -152,7 +153,7 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <text id="yearlyrainin_text" text-anchor="end" x="590" y="975" >yearlyrainin_text</text>
 			</g>
             <g id="indoors">
-                <rect id="rect8" x="600" y="600" width="400" height="400" />
+                <rect class="rect1"  id="rect8" x="600" y="600" width="400" height="400" />
                 <text id="indoor_word" class="large" text-anchor="middle" x="800" y="675" >Indoors:</text>
                 <text id="tempinf_indoor_word" text-anchor="middle" x="800" y="750" >Temp</text>
                 <text id="tempinf_indoor_text" text-anchor="middle" x="800" y="800" >indoor temp</text>
@@ -163,40 +164,41 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <text id="feelsLikein_text" text-anchor="middle" x="800" y="975" >feelsLikein_text</text>
             </g>
             <g id="moon_image">
-                <rect id="rect6" x="1000" y="350" width="400" height="400" />
-				<a target="blank" href="https://www.moongiant.com/phase/today/">
-					<image id="moonImage" x="1000" y="350" href="moon.jpg" height="400" width="400" mask="url(#moonMask)">	</image>
-				</a>
+                <rect class="rect1"  id="rect6" x="1000" y="350" width="400" height="400" />
+
 				<mask id="moonMask">
 					<circle fill="#ffffff" id="moonMaskCircle" cx="1200" cy="550" r="199">	</circle>
 					<path id="moonMaskPath" d="M 1200 350, a 200 200,  0 0 0, 0 400,  200 200, 0 0 0, 0 -400  z">	</path>
 				</mask>
             </g>   
             <g id="pressure">
-                <rect id="rect7" x="1400" y="350" width="600" height="400" />
+                <rect class="rect1"  id="rect7" x="1400" y="350" width="600" height="400" />
                 <text id="pressure_word" class="large" text-anchor="middle"x="1700" y="425" >Pressure</text>
                 <text id="pressure_text" text-anchor="middle" x="1700" y="525" >pressure</text>
                 <text id="pressure_scale_text" text-anchor="middle" x="1700" y="675" >pressure_scale_text</text>
                 <text id="pressure_feel_text" text-anchor="middle" x="1700" y="725" >pressure_feel_text</text>
             </g>             
             <g id="uv">
-                <rect id="rect9" x="1000" y="750" width="400" height="250" />
+                <rect class="rect1"  id="rect9" x="1000" y="750" width="400" height="250" />
                 <text id="uvi_word" class="large" text-anchor="middle" x="1200" y="825" >UV Index</text>
                 <text id="uvi_text" text-anchor="middle" x="1050" y="937" >uvi</text>
                 <text id="uvi_risk_word" text-anchor="end" x="1380" y="900" >risk</text>
                 <text id="uvi_risk_text" text-anchor="end" x="1380" y="975" >uvi_risk_text</text>
             </g>   
             <g id="light">
-                <rect id="rect10" x="1400" y="750" width="600" height="250" />
+                <rect class="rect1"  id="rect10" x="1400" y="750" width="600" height="250" />
                 <text id="light_word" class="large" text-anchor="middle" x="1700" y="825" >Light</text>
                 <text id="light_text" text-anchor="middle" x="1700" y="950" >light</text>
             </g>
             <g id="battery">
-                <rect id="rect11" x="1900" y="900" width="100" height="100" />
+                <rect class="rect1"  id="rect11" x="1900" y="900" width="100" height="100" />
                 <text id="battery_word" class="small" text-anchor="end" x="1995" y="925" >Batt</text>
                 <circle id="battery_circle" cx="1950" cy="963" r="25" />
             </g>
         </g>
+				<a target="blank" href="https://www.moongiant.com/phase/today/">
+					<image id="moonImage" x="1000" y="350" href="moon.jpg" height="400" width="400" mask="url(#moonMask)">	</image>
+				</a>
         </svg>
 </div>
     <div id="video_div" class="video_div">
