@@ -132,11 +132,11 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             <g id="date-time">
                 <rect class="rect1"  id="rect3" x="1000" y="0" width="1000" height="250" />
                 <text id="date_text" class="large" text-anchor="middle" x="1500" y="75" >Date</text>
-                <text id="time_text" text-anchor="middle" x="1500" y="175" >time</text>
+                <text id="time_text" class="large" text-anchor="middle" x="1500" y="175" >Time</text>
             </g>
             <g id="moon_phase">
                 <rect class="rect1"  id="rect4" x="1000" y="250" width="1000" height="100" />
-                <text id="moon_phase_text" text-anchor="middle" x="1500" y="325" >Moon phase</text>
+                <text id="moon_phase_text" class="large" text-anchor="middle" x="1500" y="325" >Moon phase</text>
 			</g>
             <g id="rain">
                 <rect class="rect1"  id="rect5" x="0" y="600" width="600" height="400" />
@@ -235,10 +235,13 @@ antelope_vid.playbackRate = 60/28/4;
         // Replace these with your actual API Key and Application Key
         const API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
         const APPLICATION_KEY = 'fa627b2989d645cd9ec0bf5e15d4f38bc0253d60fad448f29f55b23b18cc8371';
-        const endpoint = 'https://api.ambientweather.net/v1/devices';
+        const endpoint = 'https://api.ambientweather.net/v1/devices?';
+        const rt2point = 'https://rt2.ambientweather.net/?api=1&applicationKey=';
 
 // Ambient Weather API URL
-const url = `https://api.ambientweather.net/v1/devices?apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
+//const url = `https://api.ambientweather.net/v1/devices?apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
+const url = `${endpoint}apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
+//const url = `${rt2point}${APPLICATION_KEY}`;
 
 // Function to fetch weather data
 async function fetchWeatherData() {
@@ -262,7 +265,6 @@ async function fetchWeatherData() {
         const wind_direction = weatherData?.winddir;		// Wind direction in degrees
         const maxdailygust = weatherData?.maxdailygust;		// max daily gust
         const temperature = weatherData?.tempf;				// Temperature in Fahrenheit
-        const temperatureC = weatherData?.tempc;				// Temperature in Fahrenheit
         const humidity = weatherData?.humidity;				// Temperature in Fahrenheit
         const feels_like = weatherData?.feelsLike;			// Temperature in Fahrenheit
         const tempinf = weatherData?.tempinf;				// Temperature in Fahrenheit
@@ -327,20 +329,20 @@ const direction = getWindDirection(degrees);
 // Date
     const time_text = document.getElementById("time_text");
     const date_text = document.getElementById("date_text");
-	const date = new Date();
+	const date = new Date(time);        
 	const formattedDate = date.toLocaleString('en-US', {
 	weekday: 'short',
 	year: 'numeric',
 	month: 'short',
 	day: 'numeric',
-});
-const formattedTime = date.toLocaleString('en-US', {
-  hour: 'numeric',
-  minute: '2-digit',
-  hour12: true
-});
-        date_text.innerHTML = formattedDate; 
-        time_text.innerHTML = formattedTime; 
+    });
+    const formattedTime = date.toLocaleString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+    });
+    date_text.innerHTML = formattedDate; 
+    time_text.innerHTML = formattedTime; 
 
 //Rain
     const dailyrainin_text = document.getElementById("dailyrainin_text");
