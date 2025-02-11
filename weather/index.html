@@ -193,6 +193,8 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
 						<circle id="moonMaskCircle" class="moonMaskCircle" cx="1200" cy="550" r="190">	</circle>
 						<path id="moonMaskPath" class="moonMaskPath" d="M 1200 360, a 190 190,  0 0 0, 0 380,  190 190, 0 0 0, 0 -380  z">	</path>
 					</mask>
+					<circle id="moon_dot" cx="1200" cy="550" r="5" fill="red" />
+					<circle id="moon_dot2" cx="1200" cy="550" r="5" fill="red" />
 				</g>
             </g>   
             <g id="pressure">
@@ -219,7 +221,7 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <circle id="battery_circle" cx="1950" cy="963" r="20" />
             </g>
         </g>
-        </svg>
+       </svg>
 		<h2>From Pueblo West looking north-west, Pike's Peak at far right</h2>
 		<video id="idledale_vid" class="video_div video" controls  muted >
 			<source src="https://images.ambientweather.net/videos/latest/3494548CAAD7.mp4" type="video/mp4">
@@ -431,7 +433,7 @@ fetchWeatherData();
 
 //MOON phase
 var today = new Date();
-var phase = getMoonPhase(today); 
+var moonPhase = getMoonPhase(today); 
 function getMoonPhase(year, month, day) {
     // Calculation based on a known new moon date 
 //    var knownNewMoon = new Date('2022-03-02 18:34:00'); 
@@ -441,16 +443,16 @@ function getMoonPhase(year, month, day) {
     var phase = (daysSinceNewMoon % cycleLength) / cycleLength; 
     var moonDays = (daysSinceNewMoon % cycleLength); 
     var moonOutline = document.getElementById("moonOutline");
-// alert(phase);
-    if (phase < 0.1250) { moonPhase = "New Moon";        var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.1875) { moonPhase = "Waxing Crescent"; var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.3125) { moonPhase = "First Quarter";   var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.4375) { moonPhase = "Waxing Gibbous";  var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.5625) { moonPhase = "Full Moon";       var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.6875) { moonPhase = "Waning Gibbous";  var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.8125) { moonPhase = "Last Quarter";    var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.9375) { moonPhase = "Waning Crescent"; var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 1.0000) { moonPhase = "New Moon";        var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; }
+
+    if (phase < 0.0625) { moonPhaseText = "New Moon";        var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.25) { moonPhaseText = "Waxing Crescent"; var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.3125) { moonPhaseText = "First Quarter";   var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.46875) { moonPhaseText = "Waxing Gibbous";  var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.5625) { moonPhaseText = "Full Moon";       var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.6875) { moonPhaseText = "Waning Gibbous";  var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.8125) { moonPhaseText = "Last Quarter";    var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.9375) { moonPhaseText = "Waning Crescent"; var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
+	if (phase < 1.0000) { moonPhaseText = "New Moon";        var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; }
 
 function calculateCircleRadius(p1, p2, p3) {
   // Calculate the midpoints of two line segments
@@ -492,12 +494,14 @@ function calculateCircleRadius(p1, p2, p3) {
 // Example usage:
 // var phase = prompt("phase?");
 var p1 = { x: 1200, y: 350 };
-var p2 = { x: 1000 + (380 * phase), y: 550 };
+var p2 = { x: 1000 + (400 * (moonPhase * 2)), y: 550 };
 var p3 = { x: 1200, y: 750 };
 var radius = calculateCircleRadius(p1, p2, p3);
 var rad = radius ;
-//alert("daysSinceNewMoon " + daysSinceNewMoon + " // moonDays " + moonDays + " // phase " + phase + " // radius " + radius);
-	
+
+// alert(phase);
+// alert(p1.x + ", " + p1.y + " // " + p2.x + ", " + p2.y + " // " + p3.x + ", " + p3.y);
+
 // calculateCircleRadius() ;
 
 //create path to show moon
@@ -505,7 +509,8 @@ var moonMaskPath = document.getElementById("moonMaskPath");
 	moonMaskPath.setAttribute("d", "M 1200 360, a 190 190, " + sweep1 + " 0 380, " + rad + " " + rad + ", " + sweep2 + " 0 -380  z");
 	
     // Update the moon phase text
-    document.getElementById("moon_phase_text").textContent = moonPhase;
+    document.getElementById("moon_phase_text").textContent = moonPhaseText;
+    document.getElementById("moon_dot2").setAttribute("cx", p2.x)
 }
 
 
