@@ -107,7 +107,6 @@ alignment-baseline: baseline;
 
 	BATTERY
 	battout - Outdoor Battery
-	battin - Indoor Battery
 
 UV Index:	
 0–2
@@ -177,8 +176,6 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
                 <text id="indoor_word" class="large top" text-anchor="middle" x="800" y="610" >Indoors:</text>
                 <text id="tempinf_indoor_word" class="medium bottom" text-anchor="middle" x="800" y="750" >Temp</text>
                 <text id="tempinf_indoor_text" class="medium bottom" text-anchor="middle" x="800" y="800" >indoor temp</text>
-<!--                <text id="humidityin_word" class="small" text-anchor="end" x="800" y="850" >Humidity:</text>
--->
                 <text id="humidityin_text" class="small" text-anchor="middle" x="800" y="860" >humidityin_text</text>
                 <text id="feelsLikein_word" class="medium bottom" text-anchor="middle" x="800" y="925" >Feels like</text>
                 <text id="feelsLikein_text" class="medium bottom" text-anchor="middle" x="800" y="975" >feelsLikein_text</text>
@@ -191,10 +188,8 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
 					</a>
 					<mask id="moonMask" class="moonMask">
 						<circle id="moonMaskCircle" class="moonMaskCircle" cx="1200" cy="550" r="190">	</circle>
-						<path id="moonMaskPath" class="moonMaskPath" d="M 1200 360, a 190 190,  0 0 0, 0 380,  190 190, 0 0 0, 0 -380  z">	</path>
+						<path id="moonMaskPath" class="moonMaskPath" d="M 1200 360, a 190 190,  0 0 0, 0 380,  1900 1900, 0 0 0, 0 -380  z">	</path>
 					</mask>
-					<circle id="moon_dot" cx="1200" cy="550" r="5" fill="red" />
-					<circle id="moon_dot2" cx="1200" cy="550" r="5" fill="red" />
 				</g>
             </g>   
             <g id="pressure">
@@ -206,14 +201,15 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
             <g id="uv">
                 <rect id="rect9" x="1000" y="750" width="400" height="250" />
                 <text id="uvi_word" class="large top" text-anchor="middle" x="1200" y="760" >UV Index</text>
-                <text id="uvi_text" class="large top" text-anchor="middle" x="1100" y="875" >uvi</text>
-                <text id="uvi_risk_word" class="medium top" text-anchor="end" x="1380" y="875" >Risk</text>
-                <text id="uvi_risk_text" class="medium bottom" text-anchor="end" x="1380" y="975" >uvi_risk_text</text>
+                <text id="uvi_text" class="large top" text-anchor="middle" x="1075" y="875" >uvi</text>
+                <text id="uvi_risk_text" class="medium top" text-anchor="end" x="1380" y="875" >uvi_risk_text</text>
+                <text id="uvi_risk_word" class="medium bottom" text-anchor="end" x="1380" y="975" >Risk</text>
             </g>   
             <g id="light">
                 <rect id="rect10" x="1400" y="750" width="600" height="250" />
                 <text id="light_word" class="large top" text-anchor="middle" x="1700" y="760" >Light</text>
-                <text id="light_text" class="large bottom" text-anchor="end" x="1875" y="950" >light</text>
+                <text id="light_text" class="medium bottom" text-anchor="middle" x="1700" y="900" >light_text</text>
+                <text id="light_scale_text" class="medium top" text-anchor="middle" x="1700" y="935" >light_scale_text</text>
             </g>
             <g id="battery">
                 <rect id="rect11" x="1900" y="900" width="100" height="100" />
@@ -234,41 +230,25 @@ Extreme risk You should take all precautions, and try to avoid sun exposure betw
 		<img src="fov.png" />
 	</div>
 
-	<script type="text/javascript" >
-var idledale_vid = document.getElementById("idledale_vid");
-idledale_vid.addEventListener("canplay", function() {
-  setTimeout(function() {
-    video.play();
-  }, 5000);
-});
-idledale_vid.playbackRate = 60/18/4;
+<script type="text/javascript" >
 
-var antelope_vid = document.getElementById("antelope_vid");
-antelope_vid.addEventListener("canplay", function() {
-  setTimeout(function() {
-    video.play();
-  }, 5000);
-});
-antelope_vid.playbackRate = 60/28/4;
-
-
-        // Replace these with your actual API Key and Application Key
-        var API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
-        var APPLICATION_KEY = 'fa627b2989d645cd9ec0bf5e15d4f38bc0253d60fad448f29f55b23b18cc8371';
-        var endpoint = 'https://api.ambientweather.net/v1/devices';
+// Replace these with your actual API Key and Application Key
+	const API_KEY = 'c7b06a12eafb48ab8404774b50af803ed63e3e6ecda045009a9e1125e69dd8c7';
+	const APPLICATION_KEY = 'fa627b2989d645cd9ec0bf5e15d4f38bc0253d60fad448f29f55b23b18cc8371';
+	const endpoint = 'https://api.ambientweather.net/v1/devices';
 
 // Ambient Weather API URL
-var url = `https://api.ambientweather.net/v1/devices?apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
+const url = `https://api.ambientweather.net/v1/devices?apiKey=${API_KEY}&applicationKey=${APPLICATION_KEY}`;
 
 // Function to fetch weather data
 async function fetchWeatherData() {
     try {
-        var response = await fetch(url);
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        var data = await response.json();
+        const data = await response.json();
 
         if (data.length === 0) {
             console.error("No data available from the Ambient Weather API.");
@@ -276,34 +256,33 @@ async function fetchWeatherData() {
         }
 
         // Extract the required data
-        var weatherData = data[0]?.lastData; // Assuming first device's last data is what you need
-
-        var wind_speed = weatherData?.windspeedmph;		// Wind speed in mph
-        var wind_direction = weatherData?.winddir;		// Wind direction in degrees
-        var maxdailygust = weatherData?.maxdailygust;		// max daily gust
-        var temperature = weatherData?.tempf;				// Temperature in Fahrenheit
-        var humidity = weatherData?.humidity;				// Temperature in Fahrenheit
-        var feels_like = weatherData?.feelsLike;			// Temperature in Fahrenheit
-        var tempinf = weatherData?.tempinf;				// Temperature in Fahrenheit
-        var humidityin = weatherData?.humidityin;			// Temperature in Fahrenheit
-        var feelsLikein = weatherData?.feelsLikein;		// Temperature in Fahrenheit
-        var time = weatherData?.date;						// Time in UTC (milliseconds since epoch)
-        var dailyrainin = weatherData?.dailyrainin;		// Daily rain in inches
-        var eventrainin = weatherData?.eventrainin;		// Daily rain in inches
-        var weeklyrainin = weatherData?.weeklyrainin;		// Daily rain in inches
-        var monthlyrainin = weatherData?.monthlyrainin;	// Daily rain in inches
-        var yearlyrainin = weatherData?.yearlyrainin;		// Daily rain in inches
-        var pressure = weatherData?.baromrelin;			// Relative pressure in inHg
-        var indoor_temp = weatherData?.tempinf;			// Indoor temperature in Fahrenheit
-        var uvi = weatherData?.uv;						// UV index
-        var light = weatherData?.solarradiation;			// Solar radiation in W/m²
-        var battout = weatherData?.battout;				// Outdoor Battery
+    const weatherData = data[0]?.lastData; // Assuming first device's last data is what you need
+        const wind_speed = weatherData?.windspeedmph;		// Wind speed in mph
+        const wind_direction = weatherData?.winddir;		// Wind direction in degrees
+        const maxdailygust = weatherData?.maxdailygust;		// max daily gust
+        const temperature = weatherData?.tempf;				// Temperature in Fahrenheit
+        const humidity = weatherData?.humidity;				// Temperature in Fahrenheit
+        const feels_like = weatherData?.feelsLike;			// Temperature in Fahrenheit
+        const tempinf = weatherData?.tempinf;				// Temperature in Fahrenheit
+        const humidityin = weatherData?.humidityin;			// Temperature in Fahrenheit
+        const feelsLikein = weatherData?.feelsLikein;		// Temperature in Fahrenheit
+        const time = weatherData?.date;						// Time in UTC (milliseconds since epoch)
+        const dailyrainin = weatherData?.dailyrainin;		// Daily rain in inches
+        const eventrainin = weatherData?.eventrainin;		// Daily rain in inches
+        const weeklyrainin = weatherData?.weeklyrainin;		// Daily rain in inches
+        const monthlyrainin = weatherData?.monthlyrainin;	// Daily rain in inches
+        const yearlyrainin = weatherData?.yearlyrainin;		// Daily rain in inches
+        const pressure = weatherData?.baromrelin;			// Relative pressure in inHg
+        const indoor_temp = weatherData?.tempinf;			// Indoor temperature in Fahrenheit
+        const uvi = weatherData?.uv;						// UV index
+        const light = weatherData?.solarradiation;			// Solar radiation in W/m²
+        const battout = weatherData?.battout;				// Outdoor Battery
 
 /// WIND
-    var wind_speed_text = document.getElementById("wind_speed_text");
+    const wind_speed_text = document.getElementById("wind_speed_text");
     wind_speed_text.innerHTML = Math.round(wind_speed) + " MPH";
-    var wind_speed_text_C = document.getElementById("wind_speed_text_C");
-    var wind_speed_C = wind_speed * 1.609344;
+    const wind_speed_text_C = document.getElementById("wind_speed_text_C");
+    const wind_speed_C = wind_speed * 1.609344;
 	wind_speed_text_C.innerHTML = Math.round(wind_speed_C) + " KPH";
 
 function getWindDirection(degrees) {
@@ -311,7 +290,7 @@ function getWindDirection(degrees) {
         return "Invalid input. Degrees must be a number between 0 and 360.";
     }
 
-    var directions = [
+    const directions = [
         "North", "North-Northeast", "Northeast", "East-Northeast",
         "East", "East-Southeast", "Southeast", "South-Southeast",
         "South", "South-Southwest", "Southwest", "West-Southwest",
@@ -319,79 +298,72 @@ function getWindDirection(degrees) {
     ];
 
     // Divide the circle into 16 equal parts (22.5° each)
-    var index = Math.round(degrees / 22.5);
+    const index = Math.round(degrees / 22.5);
     return directions[index];
 }
 
-var degrees = wind_direction >= 0 && wind_direction <= 360 ? wind_direction : 0;
-var direction = getWindDirection(degrees);
-                
-    var wind_deg = document.getElementById("wind_deg");
-    wind_deg.innerHTML = degrees + "° ";
-        
-    var wind_dir =  document.getElementById("wind_dir");
-    wind_dir.setAttribute("transform", "rotate(" + wind_direction + ", 300, 300)");
-
-    var wind_direction_text = document.getElementById("wind_direction_text");
-    wind_direction_text.innerHTML = direction + "erly";
-
-    var maxdailygust_text = document.getElementById("maxdailygust_text");
-    maxdailygust_text.innerHTML = Math.round(maxdailygust) + " MPH";
+const degrees = wind_direction >= 0 && wind_direction <= 360 ? wind_direction : 0;
+const direction = getWindDirection(degrees);
+    const wind_deg = document.getElementById("wind_deg");
+		wind_deg.innerHTML = degrees + "° ";
+    const wind_dir =  document.getElementById("wind_dir");
+		wind_dir.setAttribute("transform", "rotate(" + wind_direction + ", 300, 300)");
+    const wind_direction_text = document.getElementById("wind_direction_text");
+		wind_direction_text.innerHTML = direction + "erly";
+    const maxdailygust_text = document.getElementById("maxdailygust_text");
+		maxdailygust_text.innerHTML = Math.round(maxdailygust) + " MPH";
 
 //OUTDOORS
-    var temp_text = document.getElementById("temp_text");
+    const temp_text = document.getElementById("temp_text");
     temp_text.innerHTML = Math.round(temperature) + " °F &nbsp / &nbsp " + Math.round((temperature-32)/1.8) + "C"; 
-    var humidity_text = document.getElementById("humidity_text");
+    const humidity_text = document.getElementById("humidity_text");
     humidity_text.innerHTML = Math.round(humidity) + "%"; 
-    var feels_like_text = document.getElementById("feels_like_text");
+    const feels_like_text = document.getElementById("feels_like_text");
     feels_like_text.innerHTML = Math.round(feels_like) + "°F &nbsp / &nbsp " + Math.round((feels_like-32)/1.8) + "C"; ; 
-//	var tempColor = document.querySelector('text');
-//	if (temperature < 30) {tempColor.style.setProperty("fill", "#00ddff");} else
-//	if (temperature < 40) {tempColor.style.setProperty("fill", "#0077ff");};
 
 // Date
-    var time_text = document.getElementById("time_text");
-    var date_text = document.getElementById("date_text");
-	var date = new Date();
-	var formattedDate = date.toLocaleString('en-US', {
+    const time_text = document.getElementById("time_text");
+    const date_text = document.getElementById("date_text");
+	const date = new Date();
+	const formattedDate = date.toLocaleString('en-US', {
 	weekday: 'short',
 	year: 'numeric',
 	month: 'short',
 	day: 'numeric',
 });
-var formattedTime = date.toLocaleString('en-US', {
+const formattedTime = date.toLocaleString('en-US', {
   hour: 'numeric',
   minute: '2-digit',
   hour12: true
 });
-        date_text.innerHTML = formattedDate; 
-        time_text.innerHTML = formattedTime; 
+    date_text.innerHTML = formattedDate; 
+    time_text.innerHTML = formattedTime; 
 
 //Rain
-    var dailyrainin_text = document.getElementById("dailyrainin_text");
+    const dailyrainin_text = document.getElementById("dailyrainin_text");
     dailyrainin_text.innerHTML = Math.round(dailyrainin* 10) / 10 + '"'; 
-    var eventrainin_text = document.getElementById("eventrainin_text");
+    const eventrainin_text = document.getElementById("eventrainin_text");
     eventrainin_text.innerHTML = Math.round(eventrainin* 10) / 10 + '"'; 
-    var weeklyrainin_text = document.getElementById("weeklyrainin_text");
+    const weeklyrainin_text = document.getElementById("weeklyrainin_text");
     weeklyrainin_text.innerHTML = Math.round(weeklyrainin* 10) / 10 + '"'; 
-    var monthlyrainin_text = document.getElementById("monthlyrainin_text");
+    const monthlyrainin_text = document.getElementById("monthlyrainin_text");
     monthlyrainin_text.innerHTML = Math.round(monthlyrainin* 10) / 10 + '"'; 
-    var yearlyrainin_text = document.getElementById("yearlyrainin_text");
+    const yearlyrainin_text = document.getElementById("yearlyrainin_text");
     yearlyrainin_text.innerHTML = Math.round(yearlyrainin* 10) / 10 + '"'; 
 
 //INDOORS
-    var tempinf_indoor_text = document.getElementById("tempinf_indoor_text");
+    const tempinf_indoor_text = document.getElementById("tempinf_indoor_text");
     tempinf_indoor_text.innerHTML = Math.round(tempinf) + " °F &nbsp / &nbsp " + Math.round((tempinf-32)/1.8) + "C"; ; 
-    var humidityin_text = document.getElementById("humidityin_text");
+    const humidityin_text = document.getElementById("humidityin_text");
     humidityin_text.innerHTML = "Humidity: " + Math.round(humidityin) + "%"; 
-    var feelsLikein_text = document.getElementById("feelsLikein_text");
+    const feelsLikein_text = document.getElementById("feelsLikein_text");
     feelsLikein_text.innerHTML = Math.round(feelsLikein) + "°F &nbsp / &nbsp " + Math.round((feelsLikein-32)/1.8) + "C"; ; 
 
 //PRESSURE
-    var pressure_text = document.getElementById("pressure_text");
+    const pressure_text = document.getElementById("pressure_text");
     pressure_text.innerHTML = Math.round(pressure) + " inHg"; 
-    var pressure_scale_text = document.getElementById("pressure_scale_text");
-    var pressure_feel_text = document.getElementById("pressure_feel_text");
+    const pressure_scale_text = document.getElementById("pressure_scale_text");
+    const pressure_feel_text = document.getElementById("pressure_feel_text");
 		if (pressure < 29.4) {pressure_scale = "Very low"; pressure_feel = "Storm warning"; } else 
 		if (pressure < 29.8) {pressure_scale = "Low"; pressure_feel = "It might rain"; } else 
 		if (pressure < 30.2) {pressure_scale = "Normal"; pressure_feel = "Nice out"; } else 
@@ -400,7 +372,7 @@ var formattedTime = date.toLocaleString('en-US', {
 		pressure_scale_text.innerHTML = pressure_scale + ": " + pressure_feel; 
 	
 //UVI
-    var uvi_text = document.getElementById("uvi_text");
+    const uvi_text = document.getElementById("uvi_text");
     uvi_text.innerHTML = uvi; 
 	if(uvi < 3) {
 		uvi_risk = "low" ;
@@ -411,63 +383,74 @@ var formattedTime = date.toLocaleString('en-US', {
 	} else if (uvi < 11) {
 		uvi_risk = "Very high ";
 	} else uvi_risk = "Extreme";
-	    var uvi_risk_text = document.getElementById("uvi_risk_text");
+	    const uvi_risk_text = document.getElementById("uvi_risk_text");
     uvi_risk_text.innerHTML = uvi_risk; 
 
 //LIGHT
-    var light_text = document.getElementById("light_text");
+    const light_text = document.getElementById("light_text");
     light_text.innerHTML = Math.round(light) + " W/m²"; 
 
+    const light_scale_text = document.getElementById("light_scale_text");
+if ( light >= 1000 ) { light_scale_text.innerHTML = "Clear sky"; } else
+if ( light > 800 ) { light_scale_text.innerHTML = "Mostly clear"; } else
+if ( light > 500 ) { light_scale_text.innerHTML = "Partly cloudy";} else
+if ( light > 200 ) { light_scale_text.innerHTML = "Overcast";} else
+if ( light > 100 ) { light_scale_text.innerHTML = "Thick cloud cover";} else
+if ( light >  50 ) { light_scale_text.innerHTML = "Heavily overcast";} else
+if ( light >  10 ) { light_scale_text.innerHTML = "Twilight";} else
+				   { light_scale_text.innerHTML = "Nighttime";}
+
 //BATTERY
-	var battery_circle = document.getElementById("battery_circle");
+	const battery_circle = document.getElementById("battery_circle");
 	if (battout == 1) {battery_circle.setAttribute("fill", "#00af00");} else {battery_circle.setAttribute("fill", "#af0000");} 
 
     } catch (error) {
         console.error("Error fetching weather data:", error);
     }
-	
 }
 
 // Call the function
 fetchWeatherData();
 
 //MOON phase
-var today = new Date();
-var moonPhase = getMoonPhase(today); 
+const today = new Date();
+const moonPhase = getMoonPhase(today); 
 function getMoonPhase(year, month, day) {
     // Calculation based on a known new moon date 
-//    var knownNewMoon = new Date('2022-03-02 18:34:00'); 
-    var knownNewMoon = new Date('2025-01-29 13:36:00'); 
-    var daysSinceNewMoon = (today - knownNewMoon) / (1000 * 60 * 60 * 24); 
-    var cycleLength = 29.53; 
-    var phase = (daysSinceNewMoon % cycleLength) / cycleLength; 
-    var moonDays = (daysSinceNewMoon % cycleLength); 
-    var moonOutline = document.getElementById("moonOutline");
-
-    if (phase < 0.0625) { moonPhaseText = "New Moon";        var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.25) { moonPhaseText = "Waxing Crescent"; var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.3125) { moonPhaseText = "First Quarter";   var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.46875) { moonPhaseText = "Waxing Gibbous";  var sweep1 = " 0 0 0, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.5625) { moonPhaseText = "Full Moon";       var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.6875) { moonPhaseText = "Waning Gibbous";  var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 0, "; } else 
-	if (phase < 0.8125) { moonPhaseText = "Last Quarter";    var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 0.9375) { moonPhaseText = "Waning Crescent"; var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; } else 
-	if (phase < 1.0000) { moonPhaseText = "New Moon";        var sweep1 = " 0 0 1, " ; var sweep2 = " 0 0 1, "; }
+//    const knownNewMoon = new Date('2022-03-02 18:34:00'); 
+    const knownNewMoon = new Date('2025-01-29 05:35:00'); // first new moon of 2025 over pueblo, Co
+    const daysSinceNewMoon = Math.round(((today - knownNewMoon) / (1000 * 60 * 60 * 24)) * 1000) / 1000; 
+    const cycleLength = 29.53; 
+    const phase = Math.round(((daysSinceNewMoon % cycleLength) / cycleLength) * 1000 ) / 1000; 
+    const moonDays = (daysSinceNewMoon % cycleLength); 
+    const moonOutline = document.getElementById("moonOutline");
+	let sweep1 = "";
+    let sweep2 = "";
+	
+    if (phase < 0.0625) { moonPhaseText = "New Moon";         sweep1 = " 0 0 0, " ;  sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.25) { moonPhaseText = "Waxing Crescent";  sweep1 = " 0 0 0, " ;  sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.3125) { moonPhaseText = "First Quarter";    sweep1 = " 0 0 0, " ;  sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.46875) { moonPhaseText = "Waxing Gibbous";   sweep1 = " 0 0 0, " ;  sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.5625) { moonPhaseText = "Full Moon";        sweep1 = " 0 0 1, " ;  sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.6875) { moonPhaseText = "Waning Gibbous";   sweep1 = " 0 0 1, " ;  sweep2 = " 0 0 0, "; } else 
+	if (phase < 0.8125) { moonPhaseText = "Last Quarter";     sweep1 = " 0 0 1, " ;  sweep2 = " 0 0 1, "; } else 
+	if (phase < 0.9375) { moonPhaseText = "Waning Crescent";  sweep1 = " 0 0 1, " ;  sweep2 = " 0 0 1, "; } else 
+	if (phase < 1.0000) { moonPhaseText = "New Moon";         sweep1 = " 0 0 1, " ;  sweep2 = " 0 0 1, "; }
 
 function calculateCircleRadius(p1, p2, p3) {
   // Calculate the midpoints of two line segments
-  var mid1 = {
+  const mid1 = {
     x: (p1.x + p2.x) / 2,
     y: (p1.y + p2.y) / 2
   };
-  var mid2 = {
+  const mid2 = {
     x: (p2.x + p3.x) / 2,
     y: (p2.y + p3.y) / 2
   };
 
   // Calculate the slopes of the two line segments
-  var slope1 = (p2.y - p1.y) / (p2.x - p1.x);
-  var slope2 = (p3.y - p2.y) / (p3.x - p2.x);
+  const slope1 = (p2.y - p1.y) / (p2.x - p1.x);
+  const slope2 = (p3.y - p2.y) / (p3.x - p2.x);
 
   // Handle vertical lines
   if (slope1 === Infinity || slope1 === -Infinity) {
@@ -478,39 +461,31 @@ function calculateCircleRadius(p1, p2, p3) {
   }
 
   // Calculate the perpendicular slopes
-  var perpSlope1 = -1 / slope1;
-  var perpSlope2 = -1 / slope2;
+  const perpSlope1 = -1 / slope1;
+  const perpSlope2 = -1 / slope2;
 
   // Calculate the center of the circle
-  var centerX = (mid2.y - mid1.y + perpSlope1 * mid1.x - perpSlope2 * mid2.x) / (perpSlope1 - perpSlope2);
-  var centerY = mid1.y + perpSlope1 * (centerX - mid1.x);
+  const centerX = (mid2.y - mid1.y + perpSlope1 * mid1.x - perpSlope2 * mid2.x) / (perpSlope1 - perpSlope2);
+  const centerY = mid1.y + perpSlope1 * (centerX - mid1.x);
 
   // Calculate the radius
-  var radius = Math.sqrt((centerX - p1.x) ** 2 + (centerY - p1.y) ** 2);
-
+  const radius = Math.sqrt((centerX - p1.x) ** 2 + (centerY - p1.y) ** 2);
   return radius;
 }
 
 // Example usage:
-// var phase = prompt("phase?");
-var p1 = { x: 1200, y: 350 };
-var p2 = { x: 1000 + (400 * (moonPhase * 2)), y: 550 };
-var p3 = { x: 1200, y: 750 };
-var radius = calculateCircleRadius(p1, p2, p3);
-var rad = radius ;
-
-// alert(phase);
-// alert(p1.x + ", " + p1.y + " // " + p2.x + ", " + p2.y + " // " + p3.x + ", " + p3.y);
-
-// calculateCircleRadius() ;
+const p1 = { x: 1200, y: 360 };
+const p2 = { x: 1000 + 380 * phase * 2 , y: 550 };
+const p3 = { x: 1200, y: 740 };
+const radius = calculateCircleRadius(p1, p2, p3);
+const rad = radius ;
 
 //create path to show moon
-var moonMaskPath = document.getElementById("moonMaskPath");
+const moonMaskPath = document.getElementById("moonMaskPath");
 	moonMaskPath.setAttribute("d", "M 1200 360, a 190 190, " + sweep1 + " 0 380, " + rad + " " + rad + ", " + sweep2 + " 0 -380  z");
-	
-    // Update the moon phase text
+
+// Update the moon phase text
     document.getElementById("moon_phase_text").textContent = moonPhaseText;
-    document.getElementById("moon_dot2").setAttribute("cx", p2.x)
 }
 
 
